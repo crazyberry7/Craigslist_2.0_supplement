@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.post_date }}
+{{ object.update_date }}
+{{ object.description }}
+{{ object.price }}
+{{ object.condition }}
