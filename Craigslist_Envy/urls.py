@@ -19,18 +19,19 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += [
 
-    url('catalog/', include('catalog.urls')),
+    path('catalog/', include('catalog.urls')),
 
-    url(r'^search/', include('haystack.urls')),
-    url(r'', include('haystack.urls'), name='homepage'),
+    path('search/', include('haystack.urls')),
+    path('', include('haystack.urls'), name='homepage'),
 
     path('users/', include('django.contrib.auth.urls')),
-    path('accounts/', include('allauth.urls')),
+
+    #path('accounts/', include('allauth.urls')),
 
 ]
 

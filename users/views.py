@@ -1,16 +1,26 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 import json
 import sys
 from oauth2client import client
 from flask import make_response, session, request, render_template, Flask
 # Create your views here.
 
+
+"""
+def login(request):
+
+
+
+def logout(request):
+	logout(request)
+
+"""
 if os.path.isfile('client_secrets.json') is False:
     sys.exit('client_secrets.json not found')
 CLIENT_ID = json.loads(open('client_secrets.json', 'r').read())['web']['client_id']
 
-def login_user(request):
+def login(request):
     id_token = request.form.get('id_token', '')
     
     idinfo = client.verify_id_token(id_token, CLIENT_ID)
@@ -28,6 +38,5 @@ def login_user(request):
 
     store.put()
     session['id'] = sub
-    return render(request, 'search.html')
-    
+    return render(request, 'login.html')
     
