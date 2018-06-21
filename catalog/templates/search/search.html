@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
  <head>	
+
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  	<meta http-equiv="x-ua-compatible" content="ie=edge">	
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+	 
+
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init"></script>
 	<meta name="google-signin-client_id" content="822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com">
@@ -116,14 +132,14 @@ body {
         		<i class="fa fa-search"></i>
      		</button>
   	{% if user.is_authenticated %}
-		<button onclick="signout()"> Sign out </button>
-
+		Hi {{ user.username}} !
+		<a class="btn btn-default" href= "{% url 'logout' %}" role="button"> Sign Out </a> 
 	{% else %}
-
-		<div class="g-signin2" data-onsuccess="onSignIn"></div> 
-
+		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> 
+		-->
+		<a class="btn btn-default" href= "{% url 'login' %}" role="button"> login </a> 
+		<a class="btn btn-default" href= "{% url 'signup_view' %}" role="button"> signup </a>
 	{% endif %}
-
     </div>
     
 
@@ -133,34 +149,48 @@ body {
 	<br>
 	<br>
 	<br>
-	
-	<h3>Results</h3>
+	<h3> Results </h3>
+	<br>
+	<br>
+	<br>
+
 	{% if query %}
+		<div class='col-md-8 col-sm-offset-2'>
+		<div class="row">
+		{% for result in page.object_list %}
+			<div class="col-sm-6">	
+			<div class="card" style="width: 22rem;">
+			  <!-- Card image -->
+			  <div class="view overlay">
+			    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+			    <a href="#!">
+			      <div class="mask rgba-white-slight"></div>
+			    </a>
+			  </div>
 
-            {% for result in page.object_list %}
-                <p>
-                    <!--<a href="{{ result.object.get_absolute_url }}"> {{ result.object.title }}</a> -->
-		    {{result.object.title}}
-		    {{result.object.price}}
-		    {{result.object.update_date}}
+			  <!-- Card content -->
+			  <div class="card-body">
 
-                </p>
-            {% empty %}
-                <p>No results found.</p>
-            {% endfor %}
+			    <!-- Title -->
+			    <h4 class="card-title"> {{result.object.title}} </h4>
+			    <!-- Text -->
+			    <p class="card-text"> ${{result.object.price}} </p>
+			    <!-- Button -->
+			    <a href="#" class="btn btn-primary">Button</a>
 
-           
+			  </div>
 
-		 {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-                </div>
-            {% endif %}
-        {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
-        {% endif %}
-    </form>
+			</div>		
+		    </div>
+		{% cycle "" "<div class='col-sm-12'><hr/></div></div><div class='row'>"%}
+		{% empty %}
+           		<p>No results found.</p>
+		{% endfor %}
+		</div>
+	       </div>
+
+          {% else %}
+	  {% endif %} 
+	</form>
 </body>
 </html>

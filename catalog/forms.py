@@ -11,6 +11,6 @@ class Query(forms.Form):
 class Posting_Form(forms.ModelForm):
 	class Meta:
 	    model = Posting
-	    fields = ('title', 'description', 'price', 'email',)
+	    fields = ('title', 'condition','description', 'price', 'email',)
 
 

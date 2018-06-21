@@ -41,10 +41,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'catalog.apps.CatalogConfig',
     'haystack.apps.HaystackConfig',
+    'localflavor',
 )
 
 AUTH_USER_MODEL = 'users.customuser'
 
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/users/login'
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,11 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Craigslist_Envy.wsgi.application'
-# Redirect URLs
-
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'login'
-
 
 
 # Haystack 

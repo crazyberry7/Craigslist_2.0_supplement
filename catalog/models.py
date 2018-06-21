@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, User
+from localflavor.us.models import USZipCodeField, USStateField
 #from users.models import CustomUser
 # Create your models here.
 
@@ -9,24 +10,35 @@ from django.contrib.auth.models import AbstractUser, User
 class Posting(models.Model):
 
     CONDITIONS = (
+	('N', 'New'),
+	('LN', 'New, Open-Box'),
+	('R', 'Refurbished'),
         ('U', 'Used'),
-        ('N', 'New'),
-        ('LN', 'New, Open-Box'),
-    )
+	('FP', 'For Parts or not working'),
+              	    )
     #sample_user = CustomUser.objects.create_custom_user('Brian', 'Wang', 'ipadproman14@gmail.com', 'abcdef', False, 'ipadproman14', False, True, '2011-01-01')
     
     #sample_user = User.objects.create_user('john', 'john@gmail.com', 'password') 
     #Fields
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1, related_name='+')
+    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=2, related_name='+')
+    number_id = models.IntegerField(default=None, null=True, blank=True)
+    username = models.CharField(max_length = 30, default=None, null=True, blank=True) 
     title = models.CharField(max_length = 50, default=None, null=True, blank=True)
     post_date = models.DateTimeField(auto_now_add = True)
     update_date = models.DateTimeField(auto_now = True)
     description = models.TextField(default=None, null=True, blank=True)
     price = models.IntegerField(default=None, null=True, blank=True)
     condition = models.CharField(max_length = 20, choices = CONDITIONS, null=True, blank=True)
-    email = models.CharField(max_length = 30, default=None, null=True, blank=True)
+    email = models.EmailField(default=None, null=True, blank=True)
     contact_name = models.CharField(max_length = 30, null=True, blank=True)
+    url = models.CharField(max_length = 30, null=True, blank=True)
+    street = models.CharField(max_length = 30, null=True, blank=True)
+    city = models.CharField(max_length = 30, null=True, blank=True)
+    state = USStateField(null=True, blank=True)
+    zipcode = USZipCodeField(null=True, blank=True)
     
+    readonly_fields=('user',) 
     class Meta:
         ordering = ["update_date"]
     """

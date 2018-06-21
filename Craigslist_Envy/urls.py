@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth.views import login,logout
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from registration import views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -26,10 +28,13 @@ urlpatterns += [
 
     path('catalog/', include('catalog.urls')),
 
-    path('search/', include('haystack.urls')),
+    path('search/', include('haystack.urls'), name= 'blah'),
     path('', include('haystack.urls'), name='homepage'),
 
     path('users/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', views.signup, name='signup_view'),
+    path('users/logout/', views.logout, name='logout_view'),
+    path('users/login/', login, {'next_page': '/'}),
 
     #path('accounts/', include('allauth.urls')),
 
