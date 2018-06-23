@@ -21,6 +21,7 @@
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init"></script>
 	<meta name="google-signin-client_id" content="822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com">
+	
 	<script>
 	   gapi.load('auth2', initSigninV2);
 	   function initSigninV2() {
@@ -58,7 +59,7 @@ body {
 .searchTerm {
   float: left;
   left: 500px;
-  width: 50%;
+  width: 40%;
   border: 1px solid #232f3f;
   padding: 1px;
   height: 40px;
@@ -76,10 +77,10 @@ body {
 
 .searchButton {
   position: relative;  
-  left: -127px;
+  left: -44px;
   width: 44px;
   top: 1px;
-  height: 42px;
+  height: 38px;
   border: 0px solid #232f3f;
   /*background: #00B4CC;*/
   background: #ffbb33;
@@ -112,10 +113,24 @@ body {
 #nav-bar{
   position: absolute;
   border: 0px solid #00B4CC;
-  height: 100px;
+  height: 80px;
   width: 100%;
   background: #232f3f;
   display: flex;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 200px;
+  margin: 30px;
+  text-align: center;
+  line-height: 10px;
+  font-size: 30px;
 }
 </style>
 
@@ -133,17 +148,16 @@ body {
      		</button>
   	{% if user.is_authenticated %}
 		Hi {{ user.username}} !
-		<a class="btn btn-default" href= "{% url 'logout' %}" role="button"> Sign Out </a> 
+		<a class="btn btn-default" href= "{% url 'logout' %}" role="button" style="font-size:10px;"> Sign Out </a> 
 	{% else %}
 		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> 
 		-->
-		<a class="btn btn-default" href= "{% url 'login' %}" role="button"> login </a> 
-		<a class="btn btn-default" href= "{% url 'signup_view' %}" role="button"> signup </a>
+		<a class="btn btn-default" href= "{% url 'login' %}" role="button" style="font-size:10px;"> login </a> 
+		<a class="btn btn-default" href= "{% url 'signup_view' %}" role="button" style="font-size:10px;"> signup </a>
 	{% endif %}
     </div>
-    
-
 </div>
+
     	<br>
 	<br>
 	<br>
@@ -155,11 +169,14 @@ body {
 	<br>
 
 	{% if query %}
+		<!--
 		<div class='col-md-8 col-sm-offset-2'>
 		<div class="row">
+		-->
+		<div class="flex-container">
 		{% for result in page.object_list %}
-			<div class="col-sm-6">	
-			<div class="card" style="width: 22rem;">
+			<!--<div class="col-sm-6">-->
+			<div> <div class="card" style="width: 22rem;">
 			  <!-- Card image -->
 			  <div class="view overlay">
 			    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
@@ -170,23 +187,20 @@ body {
 
 			  <!-- Card content -->
 			  <div class="card-body">
-
 			    <!-- Title -->
 			    <h4 class="card-title"> {{result.object.title}} </h4>
 			    <!-- Text -->
 			    <p class="card-text"> ${{result.object.price}} </p>
 			    <!-- Button -->
 			    <a href="#" class="btn btn-primary">Button</a>
-
 			  </div>
-
 			</div>		
+
 		    </div>
-		{% cycle "" "<div class='col-sm-12'><hr/></div></div><div class='row'>"%}
+		<!--{% cycle "" "<div class='col-sm-12'><hr/></div></div><div class='row'>"%}-->
 		{% empty %}
-           		<p>No results found.</p>
+           		<p> <h2> No results found. </h2> </p>
 		{% endfor %}
-		</div>
 	       </div>
 
           {% else %}
