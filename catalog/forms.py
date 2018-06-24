@@ -8,7 +8,7 @@ class Query(forms.Form):
         return query
 
 
-class Posting_Form(forms.ModelForm):
+class Posting_Form1(forms.ModelForm):
 	class Meta:
 	    model = Posting
 	    fields = ('title', 'condition','description', 'price', 'email',)

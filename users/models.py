@@ -38,7 +38,7 @@ class customuser(AbstractUser):
     first_name = models.CharField(max_length = 50)
     last_name = models.CharField(max_length = 50)
     email = models.CharField(max_length = 50)
-    username = models.CharField(max_length = 30)
+    username = models.CharField(max_length = 30, unique=True)
 	
     def __str__(self):
       	return self.username

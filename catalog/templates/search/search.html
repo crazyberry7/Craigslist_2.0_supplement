@@ -111,7 +111,10 @@ body {
 }
 
 #nav-bar{
-  position: absolute;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  overflow: hidden;
   border: 0px solid #00B4CC;
   height: 80px;
   width: 100%;
@@ -132,6 +135,11 @@ body {
   line-height: 10px;
   font-size: 30px;
 }
+
+.main {
+  margin-top: 30px;
+
+}
 </style>
 
 
@@ -147,7 +155,6 @@ body {
         		<i class="fa fa-search"></i>
      		</button>
   	{% if user.is_authenticated %}
-		Hi {{ user.username}} !
 		<a class="btn btn-default" href= "{% url 'logout' %}" role="button" style="font-size:10px;"> Sign Out </a> 
 	{% else %}
 		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> 
@@ -158,10 +165,15 @@ body {
     </div>
 </div>
 
+<div class="main">
     	<br>
 	<br>
 	<br>
 	<br>
+	<br>
+	{% if user.is_authenticated %}
+	   <h3> Hi {{ user.username }} </h3>
+	{% endif %}
 	<br>
 	<h3> Results </h3>
 	<br>
@@ -206,5 +218,6 @@ body {
           {% else %}
 	  {% endif %} 
 	</form>
+</div>
 </body>
 </html>

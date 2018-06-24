@@ -32,6 +32,7 @@ SITE_ID = 1
 
 INSTALLED_APPS = (
     'users',
+    'formtools',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

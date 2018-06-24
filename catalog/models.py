@@ -37,6 +37,11 @@ class Posting(models.Model):
     city = models.CharField(max_length = 30, null=True, blank=True)
     state = USStateField(null=True, blank=True)
     zipcode = USZipCodeField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, width_field="width_field", height_field="height_field")
+    width_field = models.IntegerField(default=0)
+    height_field = models.IntegerField(default=0)
+    text = models.BooleanField(default=False)
+    call = models.BooleanField(default=False)
     
     readonly_fields=('user',) 
     class Meta:

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import Query
 
 from .models import Posting
-from .forms import Posting_Form
+from .forms import Posting_Form1
 
 # Create your views here.
 #View interacts with database to retrieve data
@@ -30,7 +30,7 @@ def post_detail(request, id=None):
 
 @login_required
 def post_create(request):
-    form = Posting_Form(request.POST or None)
+    form = Posting_Form1(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
