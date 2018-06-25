@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from formtools.wizard.views import SessionWizardView
 from .forms import Query
 
 from .models import Posting
-from .forms import Posting_Form1
+from .forms import Posting_Form_Title, Posting_Form_Contact, Posting_Form_Description, Posting_Form_Location
 
 # Create your views here.
 #View interacts with database to retrieve data
@@ -18,6 +19,17 @@ def index(request):
 #feature that updates it's on search models with Django database. Just follow haystack instructions
 # and add url mapping and search.html page and i'm good to go
 
+FORMS = [("Title", Posting_Form_Title),
+	 ("Contact", Posting_Form_Contact),
+	 ("Description", Posting_Form_Description),
+	 ("Location", Posting_Form_Location)]
+
+class OrderWizard(SessionWizardView):
+	def get_template_names(self):
+            return [TEMPLATES[self.steps.current]]
+
+	def done(self, form_list, form_dict, **kwargs): 
+            form  
 
 
 def post_detail(request, id=None):
@@ -30,7 +42,7 @@ def post_detail(request, id=None):
 
 @login_required
 def post_create(request):
-    form = Posting_Form1(request.POST or None)
+    form = Posting_Form_Title(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
