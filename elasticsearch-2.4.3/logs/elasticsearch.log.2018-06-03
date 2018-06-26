@@ -1,0 +1,18 @@
+[2018-06-03 19:00:42,908][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-06-03 19:00:43,120][INFO ][node                     ] [Infectia] version[2.4.3], pid[6625], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-06-03 19:00:43,120][INFO ][node                     ] [Infectia] initializing ...
+[2018-06-03 19:00:44,228][INFO ][plugins                  ] [Infectia] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-06-03 19:00:44,276][INFO ][env                      ] [Infectia] using [1] data paths, mounts [[/home (home)]], net usable_space [102.1gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-06-03 19:00:44,276][INFO ][env                      ] [Infectia] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-06-03 19:00:46,363][INFO ][node                     ] [Infectia] initialized
+[2018-06-03 19:00:46,363][INFO ][node                     ] [Infectia] starting ...
+[2018-06-03 19:00:46,457][INFO ][transport                ] [Infectia] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-03 19:00:46,463][INFO ][discovery                ] [Infectia] elasticsearch/7ij215EpRbaD2jTZLoM0IQ
+[2018-06-03 19:00:50,522][INFO ][cluster.service          ] [Infectia] new_master {Infectia}{7ij215EpRbaD2jTZLoM0IQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-06-03 19:00:50,548][INFO ][http                     ] [Infectia] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-03 19:00:50,548][INFO ][node                     ] [Infectia] started
+[2018-06-03 19:00:50,612][INFO ][gateway                  ] [Infectia] recovered [0] indices into cluster_state
+[2018-06-03 19:02:09,420][INFO ][cluster.metadata         ] [Infectia] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2018-06-03 19:02:09,705][INFO ][cluster.metadata         ] [Infectia] [haystack] create_mapping [modelresult]
+[2018-06-03 19:02:09,935][INFO ][cluster.routing.allocation] [Infectia] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2018-06-03 19:02:29,794][INFO ][cluster.metadata         ] [Infectia] [haystack] update_mapping [modelresult]

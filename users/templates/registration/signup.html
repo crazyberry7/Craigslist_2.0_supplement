@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  	<meta http-equiv="x-ua-compatible" content="ie=edge">	
+
+
+	<!-- Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!--Material Design Bootstrap-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+	<!--Your custom styles (optional) -->
+
+ </head>
+
+<style>
+.center-div {
+  position: absolute;
+  margin: auto;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 300px;
+  border-radius: 3px;
+}
+</style>
+
+
+<body>
+<!--
+ <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+-->
+<!-- Card -->
+<div class="center-div">
+  <div class="card">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form method="post" action="">
+	    {% csrf_token %}
+	    {% for error in field.errors %}
+          	<p style="color: red">{{ error }}</p>
+            {% endfor %}
+
+            <p class="h4 text-center py-4">Sign up</p>
+   	<form method="post">
+	    {% csrf_token %}
+	    <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+<!--                <input type="text" name="username" id="username" placeholder="Username" class="form-control">-->
+		{{ form.username }}
+                <label for="materialFormCardNameEx" class="font-weight-light"></label>
+            </div>
+
+            <!-- Material input text -->
+            
+            <!-- Material input email -->
+            <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <!--<input type="email" id="email" placeholder="Email" class="form-control">-->
+		{{ form.email }}
+                <label for="materialFormCardEmailEx" class="font-weight-light"></label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <!--<input type="password" id="password1" placeholder="Password" class="form-control">-->
+		{{ form.password1 }}
+                <label for="materialFormCardPasswordEx" class="font-weight-light"></label>
+            </div>
+
+	    <!-- Material input confirm password -->
+            <div class="md-form">
+                <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+                <!--<input type="password" id="password2" placeholder="Password again" class="form-control">-->
+		{{ form.password2 }}
+                <label for="materialFormCardConfirmEx" class="font-weight-light"></label>
+            </div>
+
+
+
+            <div class="text-center py-4 mt-3">
+                <button type="submit" class="btn btn-cyan">Register</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+</div>
+</body>
+

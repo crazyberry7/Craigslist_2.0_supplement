@@ -47,7 +47,7 @@ INSTALLED_APPS = (
 )
 
 AUTH_USER_MODEL = 'users.customuser'
-
+MEDIA_ROOT = '/home/crazyberry7/Craigslist_2.0_Supplement/media/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login'

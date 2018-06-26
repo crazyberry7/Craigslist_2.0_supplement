@@ -1,0 +1,15 @@
+[2018-06-14 23:47:24,765][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-06-14 23:47:25,240][INFO ][node                     ] [Hairbag] version[2.4.3], pid[363], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-06-14 23:47:25,240][INFO ][node                     ] [Hairbag] initializing ...
+[2018-06-14 23:47:26,804][INFO ][plugins                  ] [Hairbag] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-06-14 23:47:26,836][INFO ][env                      ] [Hairbag] using [1] data paths, mounts [[/home (home)]], net usable_space [119.2gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-06-14 23:47:26,836][INFO ][env                      ] [Hairbag] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-06-14 23:47:28,750][INFO ][node                     ] [Hairbag] initialized
+[2018-06-14 23:47:28,750][INFO ][node                     ] [Hairbag] starting ...
+[2018-06-14 23:47:28,836][INFO ][transport                ] [Hairbag] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-14 23:47:28,841][INFO ][discovery                ] [Hairbag] elasticsearch/9GK4qsq_RXqXGdkkN1HWIw
+[2018-06-14 23:47:32,890][INFO ][cluster.service          ] [Hairbag] new_master {Hairbag}{9GK4qsq_RXqXGdkkN1HWIw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-06-14 23:47:32,909][INFO ][http                     ] [Hairbag] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-14 23:47:32,909][INFO ][node                     ] [Hairbag] started
+[2018-06-14 23:47:32,984][INFO ][gateway                  ] [Hairbag] recovered [1] indices into cluster_state
+[2018-06-14 23:47:33,612][INFO ][cluster.routing.allocation] [Hairbag] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][1]] ...]).

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  	<meta http-equiv="x-ua-compatible" content="ie=edge">	
+
+
+	<!-- Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!--Material Design Bootstrap-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+	<!--Your custom styles (optional) -->
+
+ </head>
+
+
+
+	
+<!--
+  {% if form.errors %}
+    <p class="error">Sorry, that's not a valid username or password</p>
+  {% endif %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="" id="username">
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="login" />
+  </form>
+-->
+<style>
+
+.form-elegant .font-small {
+  font-size: 0.8rem; }
+
+.form-elegant .z-depth-1a {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
+
+.center-div {
+  position: absolute;
+  margin: auto;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 300px;
+  border-radius: 3px;
+}
+
+</style>
+<!--
+  {% if form.errors %}
+    <p class="error">Sorry, that's not a valid username or password</p>
+  {% endif %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="" id="username">
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="login" />
+  </form>
+-->
+
+<body>
+
+<!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+
+<div class="center-div">
+  <section class="form-elegant">
+
+    <!--Form without header-->
+    <div class="card">
+
+        <div class="card-body mx-4">
+
+            <!--Header-->
+            <div class="text-center">
+                <h3 class="dark-grey-text mb-5"><strong>Sign in</strong></h3>
+            </div>
+
+            <!--Body-->
+	    {% if form.errors %}
+    		<p class="error">Sorry, that's not a valid username or password</p>
+  	    {% endif %}
+
+
+	    <form action="" method="post" autocomplete="off">
+		{% csrf_token %}
+		<div class="md-form">
+		  <input type="text" name="username" placeholder="Username" autocomplete="new-password" class="form-control" value="" id="username">
+		  <label for="Form-email1"></label> 
+		</div>
+
+	        <div class="md-form pb-3"> 
+		  <label for="password"></label>
+    	  	  <input type="password" name="password" placeholder="Password" value="" autocomplete="new-password" class="form-control" id="password">
+		</div>
+		
+		<div class="text-center mb-3">
+                  <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a" value="login">Sign in</button>
+            	</div>			
+
+ 	    </form>
+	
+	   
+
+            <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with:</p>
+
+                <div class="row my-3 d-flex justify-content-center">
+                    <!--Facebook-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook blue-text text-center"></i></button>
+                    <!--Twitter-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-twitter blue-text"></i></button>
+                    <!--Google +-->
+                    <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fa fa-google-plus blue-text"></i></button>
+                </div>
+
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer mx-5 pt-3 mb-1">
+            <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="http://127.0.0.1:8000/accounts/signup/" class="blue-text ml-1"> Sign Up</a></p>
+        </div>
+
+    </div>
+    <!--/Form without header-->
+
+</section>
+</div>
+</body>

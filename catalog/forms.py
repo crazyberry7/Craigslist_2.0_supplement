@@ -7,6 +7,12 @@ class Query(forms.Form):
    def get_query(self):
         return query
 
+class Posting_Form_Final(forms.ModelForm):
+        class Meta:
+            model = Posting
+            fields = ('title', 'image', 'condition', 'description',
+			'price', 'email', 'phone_number', 'street', 'city', 'state',
+			'zipcode',)
 
 class Posting_Form_Title(forms.ModelForm):
 	class Meta:
