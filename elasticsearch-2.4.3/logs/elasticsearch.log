@@ -1,15 +1,15 @@
-[2018-06-20 01:08:45,795][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
-[2018-06-20 01:08:45,989][INFO ][node                     ] [Madame MacEvil] version[2.4.3], pid[135], build[d38a34e/2016-12-07T16:28:56Z]
-[2018-06-20 01:08:45,989][INFO ][node                     ] [Madame MacEvil] initializing ...
-[2018-06-20 01:08:47,226][INFO ][plugins                  ] [Madame MacEvil] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
-[2018-06-20 01:08:47,256][INFO ][env                      ] [Madame MacEvil] using [1] data paths, mounts [[/home (home)]], net usable_space [111.3gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
-[2018-06-20 01:08:47,256][INFO ][env                      ] [Madame MacEvil] heap size [989.8mb], compressed ordinary object pointers [true]
-[2018-06-20 01:08:49,190][INFO ][node                     ] [Madame MacEvil] initialized
-[2018-06-20 01:08:49,190][INFO ][node                     ] [Madame MacEvil] starting ...
-[2018-06-20 01:08:49,277][INFO ][transport                ] [Madame MacEvil] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
-[2018-06-20 01:08:49,283][INFO ][discovery                ] [Madame MacEvil] elasticsearch/1QDxG66nRGOO_kmIQD8E3A
-[2018-06-20 01:08:53,329][INFO ][cluster.service          ] [Madame MacEvil] new_master {Madame MacEvil}{1QDxG66nRGOO_kmIQD8E3A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
-[2018-06-20 01:08:53,348][INFO ][http                     ] [Madame MacEvil] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
-[2018-06-20 01:08:53,348][INFO ][node                     ] [Madame MacEvil] started
-[2018-06-20 01:08:53,417][INFO ][gateway                  ] [Madame MacEvil] recovered [1] indices into cluster_state
-[2018-06-20 01:08:54,148][INFO ][cluster.routing.allocation] [Madame MacEvil] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][2]] ...]).
+[2018-06-26 20:24:24,445][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-06-26 20:24:24,610][INFO ][node                     ] [Ev Teel Urizen] version[2.4.3], pid[177], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-06-26 20:24:24,610][INFO ][node                     ] [Ev Teel Urizen] initializing ...
+[2018-06-26 20:24:25,645][INFO ][plugins                  ] [Ev Teel Urizen] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-06-26 20:24:25,680][INFO ][env                      ] [Ev Teel Urizen] using [1] data paths, mounts [[/home (home)]], net usable_space [110.9gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-06-26 20:24:25,680][INFO ][env                      ] [Ev Teel Urizen] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-06-26 20:24:27,322][INFO ][node                     ] [Ev Teel Urizen] initialized
+[2018-06-26 20:24:27,322][INFO ][node                     ] [Ev Teel Urizen] starting ...
+[2018-06-26 20:24:27,399][INFO ][transport                ] [Ev Teel Urizen] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-26 20:24:27,403][INFO ][discovery                ] [Ev Teel Urizen] elasticsearch/9J3mHImxT5-T1nHOg24BTA
+[2018-06-26 20:24:31,441][INFO ][cluster.service          ] [Ev Teel Urizen] new_master {Ev Teel Urizen}{9J3mHImxT5-T1nHOg24BTA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-06-26 20:24:31,461][INFO ][http                     ] [Ev Teel Urizen] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-26 20:24:31,461][INFO ][node                     ] [Ev Teel Urizen] started
+[2018-06-26 20:24:31,533][INFO ][gateway                  ] [Ev Teel Urizen] recovered [1] indices into cluster_state
+[2018-06-26 20:24:32,326][INFO ][cluster.routing.allocation] [Ev Teel Urizen] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][2]] ...]).
