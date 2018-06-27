@@ -33,7 +33,6 @@ class OrderWizard(SessionWizardView):
         file_storage = FileSystemStorage(location= os.path.join(settings.MEDIA_ROOT, 'photos'))
         #def get_template_names(self):
         #    return [TEMPLATES[self.steps.current]]
-
         def done(self, form_list, form_dict, **kwargs): 
             form_data = process_form_data(form_list)
             return render_to_response('done.html', {'form_data': form_data})
@@ -53,6 +52,8 @@ def process_form_data(form_list):
     instance.city = form_data[3]['city']
     instance.state = form_data[3]['state']
     instance.zip_code = form_data[3]['zipcode']
+    instance.height_field = 100 
+    instance.width_field = 100
     instance.save()
     return form_list
 

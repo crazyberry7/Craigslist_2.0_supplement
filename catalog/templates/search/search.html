@@ -129,7 +129,7 @@ body {
 
 .flex-container > div {
   background-color: #f1f1f1;
-  width: 200px;
+  width: 220px;
   margin: 30px;
   text-align: center;
   line-height: 10px;
@@ -156,6 +156,11 @@ body {
      		</button>
   	{% if user.is_authenticated %}
 		<a class="btn btn-default" href= "{% url 'logout' %}" role="button" style="font-size:10px;"> Sign Out </a> 
+
+		<a class="btn btn-default" href= "{% url 'create' %}" role="button" style="font-size:10px;"> Post </a> 
+	
+
+
 	{% else %}
 		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> 
 		-->
@@ -184,14 +189,19 @@ body {
 		<!--
 		<div class='col-md-8 col-sm-offset-2'>
 		<div class="row">
+		https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
 		-->
 		<div class="flex-container">
 		{% for result in page.object_list %}
 			<!--<div class="col-sm-6">-->
 			<div> <div class="card" style="width: 22rem;">
 			  <!-- Card image -->
-			  <div class="view overlay">
-			    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+			  <div class="view_overlay">
+			    {% if result.object.image %}
+			        <img class="card-img-top" src=' {{ result.object.image.url }}' alt="Card image cap" style="width: auto; height: auto; max-width: 200px; max-height: 150px">
+			    {% else %}
+			        <img class="card-img-top" src='https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png' alt="Card image cap">
+			    {% endif %}
 			    <a href="#!">
 			      <div class="mask rgba-white-slight"></div>
 			    </a>

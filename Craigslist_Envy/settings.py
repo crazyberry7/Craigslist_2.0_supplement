@@ -25,7 +25,7 @@ SECRET_KEY = '0az&qh$hackc%%*=!-f1%5odd*vw#b9@f99ti)6@bzjh#mex7u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['56a96cef.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['abf15a75.ngrok.io', '127.0.0.1', '127.0.0.1:8000']
 
 SITE_ID = 1
 # Application definition
@@ -47,7 +47,12 @@ INSTALLED_APPS = (
 )
 
 AUTH_USER_MODEL = 'users.customuser'
-MEDIA_ROOT = '/home/crazyberry7/Craigslist_2.0_Supplement/media/'
+#MEDIA_ROOT = '/home/crazyberry7/Craigslist_2.0_Supplement/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+MEDIA_URL = "/media/"
+
+
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login'
@@ -134,5 +139,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
