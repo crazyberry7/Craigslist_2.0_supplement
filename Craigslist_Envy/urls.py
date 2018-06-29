@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import login,logout
+from django.views.generic import TemplateView
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -37,7 +38,7 @@ urlpatterns += [
     path('users/login/', login, {'next_page': '/'}),
 
     #path('accounts/', include('allauth.urls')),
-
+    path('about/', TemplateView.as_view(template_name="about.html")), 
 ]
 
 if settings.DEBUG:
