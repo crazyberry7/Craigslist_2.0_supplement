@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'users',
     'formtools',
     'phonenumber_field',
+    'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,6 +88,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Craigslist_Envy.wsgi.application'
 
+GEOIP_PATH = os.path.join(BASE_DIR, "geoip")
 
 # Haystack 
 

@@ -1,10 +1,46 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate,login,logout
+from .models import customuser
 import json
 import sys
-from oauth2client import client
-from flask import make_response, session, request, render_template, Flask
+#from oauth2client import client
+#from flask import make_response, session, request, render_template, Flask
 # Create your views here.
+
+
+
+
+def my_profile(request):
+    """
+    user_instance = get_object_or_404(customuser, id=id)
+
+    context = {
+	'first_name': user_instance.first_name,
+	'last_name': user_instance.last_name,
+	'email': user_instance.email,
+	'username': user_instance.username,
+	'instance': user_instance,
+    }
+    """
+    return render(request, 'my_profile.html') 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """

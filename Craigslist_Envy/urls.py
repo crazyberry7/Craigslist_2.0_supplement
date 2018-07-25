@@ -21,6 +21,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from registration import views as views
+from catalog.views import CatalogSearchView
+from catalog.views import homepage
+from catalog.views import SearchView
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -29,8 +34,11 @@ urlpatterns += [
 
     path('catalog/', include('catalog.urls')),
 
-    path('search/', include('haystack.urls'), name= 'blah'),
-    path('', include('haystack.urls'), name='homepage'),
+    #path('search/', include('haystack.urls'), name= 'blah'),
+    #path('search/', CatalogSearchView.as_view()),
+    path('search/', SearchView()),
+    #path('', include('haystack.urls'), name='homepage'),
+    path('', homepage, name='homepage'),
 
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup_view'),

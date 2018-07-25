@@ -7,6 +7,11 @@ class Query(forms.Form):
    def get_query(self):
         return query
 
+class Zipcode_Form(forms.ModelForm):
+        class Meta:
+            model = Posting
+            fields = ('zipcode',)
+
 class Posting_Form_Final(forms.ModelForm):
         class Meta:
             model = Posting

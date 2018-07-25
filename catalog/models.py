@@ -3,9 +3,9 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser, User
 from localflavor.us.models import USZipCodeField, USStateField
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.gis.geos import Point
 #from users.models import CustomUser
 # Create your models here.
-
 
 
 class Posting(models.Model):
@@ -37,23 +37,28 @@ class Posting(models.Model):
     street = models.CharField(max_length = 30, null=True, blank=True)
     city = models.CharField(max_length = 30, null=True, blank=True)
     state = USStateField(null=True, blank=True)
-    zipcode = USZipCodeField(null=True, blank=True)
+    zipcode = USZipCodeField(null=True)
     image = models.ImageField(null=True, blank=True, width_field="width_field", height_field="height_field")
     width_field = models.IntegerField(default=0)
     height_field = models.IntegerField(default=0)
     text = models.BooleanField(default=False)
     call = models.BooleanField(default=False)
     phone_number = PhoneNumberField(blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     
     readonly_fields=('user',) 
     class Meta:
-        ordering = ["update_date"]
+        ordering = ["-post_date"]
     """
     def get_absolute_url(self):
         return reverse('', args=[str(self.id)])
     """
     def __str__(self):
         return self.title
+
+    def get_location(self):
+        return Point(self.longitude, self.latitude)
 
 

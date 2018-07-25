@@ -1,84 +1,46 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
  <head>	
 
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
   	<meta http-equiv="x-ua-compatible" content="ie=edge">	
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">-->
+	<!-- Bootstrap Dropdown Menu -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- end -->
+
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
-	<!-- Awesome -->
+        <!-- Devbridge Autocomplete Jquery -->
+        <script src="{% static 'jquery-2.1.1.js' %}"></script>
+        <script src="{% static 'jquery.autocomplete.js' %}"></script>
+        <script type="text/javascript" language="javascript" src="{% static 'final_final_zipcode.js' %}"></script>
+
+	<!-- Awesome Font -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Material Design Bootstrap -->
+	<!-- Material Design Bootstrap (MDB) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
 	 
-
+        <!-- Google Sign In -->
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init"></script>
 	<meta name="google-signin-client_id" content="822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com">
 	
-	<script>
-
-
-        function resizeGridItem(item){
-	  grid = document.getElementsByClassName("grid")[0];
-	  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-	  rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-	  rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
-	    item.style.gridRowEnd = "span "+rowSpan;
-	}
-
-	function resizeAllGridItems(){
-	  allItems = document.getElementsByClassName("item");
-	  for(x=0;x<allItems.length;x++){
-	    resizeGridItem(allItems[x]);
-	  }
-	}
-
-	function resizeInstance(instance){
-		item = instance.elements[0];
-	  resizeGridItem(item);
-	}
-
-	window.onload = resizeAllGridItems;
-	window.addEventListener("resize", resizeAllGridItems);
-
-	allItems = document.getElementsByClassName("item");
-	for(x=0;x<allItems.length;x++){
-	  imagesLoaded( allItems[x], resizeInstance);
-	}
-
- 	/*	
-	   gapi.load('auth2', initSigninV2);
-	   function initSigninV2() {
-
-			gapi.auth2.init({
-				client_id: '822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com'
-	   		}).then(function (authInstance) {
-		});
-	   }
-	
-	   function signout() {
-    		
-		var auth2 = gapi.auth2.getAuthInstance();
-    		auth2.signOut().then(function authInstance () {
-      		console.log('User signed out.');
-    		});
-  	   }
-  	*/
-	</script>
-	
+		
  </head>
 
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/**@import url(https://fonts.googleapis.com/css?family=Open+Sans);**/
 
 body {
   margin: 0px;
@@ -95,7 +57,7 @@ body {
 .searchTerm {
   float: left;
   left: 500px;
-  width: 40%;
+  width: 60%;
   border: 1px solid #232f3f;
   padding: 1px;
   height: 40px;
@@ -113,16 +75,16 @@ body {
 
 .searchButton {
   position: relative;  
-  left: -44px;
-  width: 44px;
-  top: 1px;
-  height: 38px;
+  left: -10px;
+  width: 36px;
+  top: 4.6px;
+  height: 33.6px;
   border: 0px solid #232f3f;
   /*background: #00B4CC;*/
   background: #ffbb33;
   text-align: center;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 20px;
 }
@@ -154,11 +116,10 @@ body {
   border: 0px solid #00B4CC;
   height: 80px;
   width: 100%;
-  background: #232f3f;
+  /**background: #232f3f;**/
   display: flex;
 }
 
-/*
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -175,7 +136,6 @@ body {
   line-height: 10px;
   font-size: 30px;
 }
-*/
 .item {
    background-color: #ffffff;
    width: 100%;
@@ -202,81 +162,186 @@ body {
   margin-right: 42px;
 }
 
+.suggestion_row {
+  background-color: #ffffff;
+  width: 95%;
+  height: 60px;
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+  text-indent: 10px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  cursor:pointer;
+  margin: 5px 5px;
+}
+
+.suggestion_row:hover {
+  background-color: #d9f2e6;
+}
+
+input[type="text"], input[type="search"], textarea {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #ccc !important;
+}
+
+.form-control {
+   border-radius: 5px;
+
+}
+.form-control.form-control-md {
+  width: 175px;
+  font-size: 12px;
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+
+}
+.form-control.form-control-lg {
+  width: 250px; 
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+
+}
+.location-info {
+  margin-left: 20px;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
 .main {
+  margin-left: -20px;
+  margin-right: 20px;
+}
+
+.divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+label, input {
+  display: block;
+
+}
+label {
+  margin-right:5px;
+}
+label_one {
+  margin-right:5px;
+}
+h1, h2, h3, h4 {
+  display: inline;
+}
+
+.lowercase {
+  text-transform: lowercase; 
+}
+.uppercase { 
+  text-transform: uppercase; 
+}
+.capitalize { 
+  text-transform: capitalize; 
 }
 </style>
-
 
 <body>
 
 
-<div id="nav-bar">
-      <div class="wrap">
+<!--<div id="nav-bar">-->
 
-	<form action="/search" method="get">
-		<input name="q" type="text" class="searchTerm"/> 
-                <button type="submit" class="searchButton">
+
+  <nav class="navbar navbar-dark default-color">
+    <form class="form-inline my-4 my-lg-4 ml-4" id="searchform" action="" method="get" autocomplete="off">
+	<div>
+        {% if query %}
+           <input class="form-control form-control-lg" onClick="this.select();" type="search" name="q" id="id_q" value={{ query }} aria-label="Search">
+        {% else %}
+	   <input class="form-control form-control-lg" onClick="this.select();" type="search" name="q" id="id_q" placeholder="Search" aria-label="Search">
+        {% endif %}
+
+	{% if query %}
+           <input class="form-control form-control-md" onClick="this.select();" type="text" name="zipcode" maxlength="5" id="id_zipcode_final" autocomplete="off" value= {{ zipcode }} aria-label="Search">
+        {% else %}
+	   <input class="form-control form-control-md" onClick="this.select();" type="text" name="zipcode" maxlength="5" id="id_zipcode_final" autocomplete="off" placeholder="Location" aria-label="Search">
+        {% endif %}
+        <button type="submit" class="searchButton">
         		<i class="fa fa-search"></i>
-     		</button>
+        </button>
+        </div> 
   	{% if user.is_authenticated %}
-		<a class="btn btn-default" href= "{% url 'logout' %}" role="button" style="font-size:10px;"> Sign Out </a> 
-
-		<a class="btn btn-default" href= "{% url 'create' %}" role="button" style="font-size:10px;"> Post </a> 
-	
+		<label_one>
+                <a class="btn btn-primary" href= "{% url 'create' %}" role="button" style="font-size:10px;"> Post </a>  
+		</label_one>
+		<label_one>
+		  <div class="dropdown">
+		    <button class="btn btn-primary dropdown-toggle" type="button" style="font-size:10px;" data-toggle="dropdown"> {{ user.username }}
+		    </button>
+		    <ul class="dropdown-menu">
+		      <li><a href="{% url 'my_profile' %}" style="font-size:14px;"> My Profile</a></li>
+		      <li><a href="#" style="font-size:14px;">Settings</a></li>
+		      <li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
+		    </ul>
+		  </div>
+		</label_one>
 
 
 	{% else %}
-		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> 
-		-->
-		<a class="btn btn-default" href= "{% url 'login' %}" role="button" style="font-size:10px;"> login </a> 
-		<a class="btn btn-default" href= "{% url 'signup_view' %}" role="button" style="font-size:10px;"> signup </a>
+		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+	        <label>	
+		<a class="btn btn-default" href= "{% url 'login' %}" role="button" style="font-size:10px;"> login </a> </label>
+		<label>
+		<a class="btn btn-default" href= "{% url 'signup_view' %}" role="button" style="font-size:10px;"> signup </a> </label>
 	{% endif %}
-    </div>
+    </form>
+  </nav>
+
+<div class="location-info">
+      <h2><b>{{ query }}</b></h2> &nbsp;  <h4> near </h4> &nbsp; <h3> {{ city }}, {{ state }} {{ zipcode }}, USA </h3>
 </div>
-
+<br>
+<div class="divider">
+     <hr size="20">
+</div>
 <div class="main">
-    	<br><br>
-	<br><br>
-	<br><br>
-    	<br>
-	{% if user.is_authenticated %}
-	   <h3> Hi {{ user.username }} </h3>
-	{% endif %}
-	<br>
-	<h3> Results </h3>
-	<br>
-	<br>
-	<br>
-
+    	<br><br><br>
 	{% if query %}
-		<div class="grid">
+		<!--<div class="flex-container">-->
+                <div class="grid">
 		{% for result in page.object_list %}
 		    <div class="item"> 
+			<a href="{% url 'post_detail' id=result.object.id %}"> 
 		        <div class="content">
 		  	    <div class="card">
+  		    <!--<div> <div class="card" style="width: 22rem;">-->
 			  	<!-- Card image -->
 			  	<div class="view_overlay">
 				    {% if result.object.image %}
-					<img class="card-img-top" src=' {{ result.object.image.url }}' alt="Card image cap">
+					<a href="{% url 'post_detail' id=result.object.id %}"> <img class="card-img-top" src=' {{ result.object.image.url }}' alt="Card image cap"> </a>
 				    {% else %}
-					<img class="card-img-top" src='https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png' alt="Card image cap">
+					<a href="{% url 'post_detail' id=result.object.id %}"><img class="card-img-top" src='https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png' alt="Card image cap"></a>
 				    {% endif %}
-				    <a href="#!">
+				    <a href="{% url 'post_detail' id=result.object.id %}">
 				      <div class="mask rgba-white-slight"></div>
 				    </a>
 				  </div>
 
 				<!-- Card content -->
+				<a href="{% url 'post_detail' id=result.object.id %}">
 			        <div class="card-body">
 				    <!-- Title -->
-				    <h4 class="card-title"> {{result.object.title}} </h4>
+				    <h4 class="card-title"><font color="black"> {{result.object.title}} </font> </h4>
 				    <!-- Text -->
-				    <p class="card-text"> ${{result.object.price}} </p>
-				    <!-- Button -->
-				    <a href="#" class="btn btn-primary">Button</a>
+				    <p class="card-text"><font color="black"><b> <h4> ${{result.object.price}}.00 </font> </h4> </b> </p>
+				    <!-- Location -->
+				    <h5><font color="grey">{{ result.object.city }} </font></h5>
 			        </div>
-			    </div> <!-- card -->
+				</a>
+			    </div>  <!-- card -->
 		      </div>  <!-- content -->
+		      </a>
 		</div>   <!-- item -->
 		{% empty %}
            		<p> <h2> No results found. </h2> </p>
@@ -287,5 +352,76 @@ body {
 	  {% endif %} 
 	</form>
 </div>
+
+
+<script>
+
+
+        function resizeGridItem(item){
+	  grid = document.getElementsByClassName("grid")[0];
+	  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+	  rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+	  rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+	    item.style.gridRowEnd = "span "+rowSpan;
+	}
+
+	function resizeAllGridItems(){
+	  allItems = document.getElementsByClassName("item");
+	  for(x=0;x<allItems.length;x++){
+	    resizeGridItem(allItems[x]);
+	  }
+	}
+
+	function resizeInstance(instance){
+		item = instance.elements[0];
+	  resizeGridItem(item);
+	}
+
+	window.onload = resizeAllGridItems;
+	window.addEventListener("resize", resizeAllGridItems);
+
+	allItems = document.getElementsByClassName("item");
+	for(x=0;x<allItems.length;x++){
+	  imagesLoaded( allItems[x], resizeInstance);
+	}
+        
+        $('#id_zipcode_final').autocomplete({
+            lookup: data,
+            lookupLimit: 5,
+            minChars: 1,
+            triggerSelectOnValidInput: false,
+            lookupFilter: function (suggestion, query, queryLowerCase) {
+                return suggestion.value.toLowerCase().indexOf(queryLowerCase) === 0;
+             },
+
+           formatResult: function (suggestion) {
+                return '<div class="suggestion_row">' + suggestion.city + ", " + suggestion.state + " " + suggestion.value + ', USA' +'</div>';
+           },
+         });
+      $('searchform').submit(function(event) {
+ 	  loadAjax();
+	  event.preventDefault()
+	});
+
+ 	/*	
+	   gapi.load('auth2', initSigninV2);
+	   function initSigninV2() {
+
+			gapi.auth2.init({
+				client_id: '822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com'
+	   		}).then(function (authInstance) {
+		});
+	   }
+	
+	   function signout() {
+    		
+		var auth2 = gapi.auth2.getAuthInstance();
+    		auth2.signOut().then(function authInstance () {
+      		console.log('User signed out.');
+    		});
+  	   }
+  	*/
+	</script>
+
 </body>
 </html>
