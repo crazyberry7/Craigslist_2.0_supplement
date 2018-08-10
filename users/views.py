@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from .models import customuser
+from .forms import CustomUserCreationForm
 import json
 import sys
 #from oauth2client import client
@@ -10,7 +13,9 @@ import sys
 
 
 
+@login_required
 def my_profile(request):
+   
     """
     user_instance = get_object_or_404(customuser, id=id)
 
@@ -22,6 +27,20 @@ def my_profile(request):
 	'instance': user_instance,
     }
     """
+    if request.GET.get('q') or request.GET.get('zipcode'):
+        query = request.GET.get('q') 
+        zipcode = request.GET.get('zipcode')
+        url = '/search/?q='+ query+'&zipcode=' + zipcode
+        return HttpResponseRedirect(url)
+
+    else:
+        #import pdb; pdb.set_trace()
+        if request.method == "POST":
+            form = CustomUserCreationForm(data=request.POST, instance=request.user)
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.save()
+
     return render(request, 'my_profile.html') 
 
 

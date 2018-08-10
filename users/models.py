@@ -35,10 +35,11 @@ class CustomUser(models.Model):
 class customuser(AbstractUser):
     is_admin = models.BooleanField(default=False)
     is_general_member = models.BooleanField(default=True)
-    first_name = models.CharField(max_length = 50)
-    last_name = models.CharField(max_length = 50)
+    first_name = models.CharField(max_length = 50, blank=True)
+    last_name = models.CharField(max_length = 50, blank=True)
     email = models.CharField(max_length = 50)
     username = models.CharField(max_length = 30, unique=True)
 	
     def __str__(self):
       	return self.username
+

@@ -1,4 +1,5 @@
 from django.db import models
+import os
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, User
 from localflavor.us.models import USZipCodeField, USStateField
@@ -60,5 +61,19 @@ class Posting(models.Model):
 
     def get_location(self):
         return Point(self.longitude, self.latitude)
+def get_image_filename(instance, filename):
+    title = instance.post.title
+    slug = slugify(title)
+    return settings.MEDIA_ROOT + "/%s-%s" % (slug, filename)  
 
 
+class Images(models.Model):
+    post = models.ForeignKey(Posting, null=True, blank=True, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='images/%Y/%m/%d')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+"""
+class Attachment(models.Model):
+    file = models.FileField(upload_to='attachments')
+    posting = models.ForeignKey(Posting, null=True, blank=True, verbose_name='posting', on_delete=models.CASCADE)
+"""

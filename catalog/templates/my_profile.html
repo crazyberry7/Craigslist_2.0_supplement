@@ -1,60 +1,83 @@
+{% extends "search_bar_extension.html" %}
+
+
 <html>
 <head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
+</style>
+{% block my_settings %}
+<!--
+<div class="alert alert-success hidden" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Success! </strong>
+    Product have added to your wishlist.
+		</div>
+-->
+
 <div class="container">
-	<div class="row">
-		<div class="col-md-9">
 		    <div class="card">
 		        <div class="card-body">
 		            <div class="row">
 		                <div class="col-md-12">
-		                    <h4>Your Profile</h4>
+		                    <h4>Settings</h4>
 		                    <hr>
 		                </div>
 		            </div>
-		            <div class="row">
+		            
+   			    <div class="row">
 		                <div class="col-md-12">
 		              <form method="post">
 				{% csrf_token %}
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Name</label> 
+                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <label for="name" id="name_label"  style="font-size:12px;" class="col-4 col-form-label">Name</label> 					
                                 <div class="col-8">
-                                  <input id="name" name="name" placeholder={{user.first_name}} class="form-control here" type="text">
+                                  <input id="username" name="username" style="font-size:14px;" value={{user.username}} class="form-control here" type="text">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email</label> 
+                                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <label for="email" id="email_label" style="font-size:12px;" class="col-4 col-form-label">Email</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder={{user.email }} class="form-control here"  type="text">
+                                  <input id="email" style="font-size:14px;" name="email" value={{user.email }} class="form-control here"  type="text">
                                 </div>
                               </div>
-                              
                               <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Your Description</label> 
+                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <label for="publicinfo" id="desc_label"  style="font-size:12px;" class="col-4 col-form-label">Your Description</label> 
                                 <div class="col-8">
-                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                  <textarea id="publicinfo" style="font-size:14px; resize:none" name="publicinfo" cols="40" rows="5" class="form-control"></textarea>
                                 </div>
                               </div>
-                              
+			      <br>
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                  <button name="submit" id="change_pw" type="submit" class="btn bg-white text-primary" style="font-size:12px">Change Password</button>
                                 </div>
                               </div>
-                            </form>
+			      <br>
+			       <hr>
+			
+			
+                              <div class="form-group row">
+                                <div class="offset-5 col-8">
+                                  <button name="submit" id="update_profile" type="submit" class="btn default-color" style="font-size:12px" onclick="modal();">Update My Profile</button>
+                                </div>
+                              </div>
+
+
+				<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    				<div class="modal-dialog modal-sm">
+        				<div class="modal-content" style="width: 48px">
+            					<span class="fa fa-refresh fa-spin fa-3x"></span>
+        				</div>
+    				</div>
+				</div>
 		                </div>
 		            </div>
-		            
 		        </div>
-		    </div>
-		</div>
 	</div>
 </div>
-
-
-
-</html
+</html>
+{% endblock %}

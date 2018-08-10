@@ -1,21 +1,24 @@
 from django.shortcuts import render, render_to_response
+from django.views.generic.edit import FormView
+from django.views import View
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.core.exceptions import SuspiciousOperation
+from django.forms import modelformset_factory
 from formtools.wizard.views import SessionWizardView
-from .forms import Query
-from .forms import Zipcode_Form
+
+from .forms import Query, Zipcode_Form, ImagesForm
 from .filters import PostingFilter
 import os 
 from haystack.generic_views import SearchView
 from haystack.query import SearchQuerySet
 from haystack.forms import ModelSearchForm
 from haystack.utils.geo import Point, D
-from .models import Posting
-from .forms import Posting_Form_Title, Posting_Form_Contact, Posting_Form_Description, Posting_Form_Location, Posting_Form_Final
+from .models import Posting, Images
+from .forms import Posting_Form_Title, Posting_Form_Contact, Posting_Form_Description, Posting_Form_Location, Posting_Form_Final, ImagesForm
 from django.contrib.gis.geoip2 import GeoIP2
 from uszipcode import ZipcodeSearchEngine
 import zipcode
@@ -248,43 +251,98 @@ class SearchView(object):
 
 
 
-"""
-FORMS = [("Title", Posting_Form_Title),
-	 ("Contact", Posting_Form_Contact),
-	 ("Description", Posting_Form_Description),
-	 ("Location", Posting_Form_Location)]
-"""
+TEMPLATES = {"Title":"OrderWizard/image_form.html", "Description":"OrderWizard/contact_form.html","Contact":"OrderWizard/contact_form.html", "Location":"OrderWizard/contact_form.html"}
 class OrderWizard(SessionWizardView):
-        template_name = "contact_form.html"
+        #template_name = "contact_form.html"
         file_storage = FileSystemStorage(location= os.path.join(settings.MEDIA_ROOT, 'photos'))
-        #def get_template_names(self):
-        #    return [TEMPLATES[self.steps.current]]
+        def get_template_names(self):
+            #import pdb; pdb.set_trace()
+            return [TEMPLATES[self.steps.current]]
         def done(self, form_list, form_dict, **kwargs): 
-            form_data = process_form_data(form_list)
+            import pdb; pdb.set_trace()
+            form_data = process_form_data(form_list, self.request)
             return render_to_response('done.html', {'form_data': form_data})
+        """
+        def get_form_kwargs(self, step):
+            kwargs = super(OrderWizard, self).get_form_kwargs(step)
+            kwargs['request'] = self.request
+            return kwargs 
+        """
+        def get(self, request):
+            #import pdb; pdb.set_trace()
+            photos_list =  []#Images.objects.all()
+            return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
+        def post(self, request):
+            import pdb; pdb.set_trace()
+        #print(request.POST)
+        #thing = self.request.POST.get('post')
+        #time.sleep(1)  # You don't need this line. This is just to delay the process so you can see the progress bar testing locally.
+            form = ImagesForm(self.request.POST, self.request.FILES)
+            if form.is_valid():
+            #import pdb; pdb.set_trace()
+                photo = form.save()
+                data = {'is_valid': True, 'name': photo.image.name, 'url': photo.image.url}
+            else:
+                data = {'is_valid': False}
+            return JsonResponse(data)
 
-def process_form_data(form_list):
-    form_data = [form.cleaned_data for form in form_list]
-    form = Posting_Form_Final()
-    instance = form.save(commit=False)
-    instance.title = form_data[0]['title']
-    instance.image = form_data[0]['image']
-    instance.condition = form_data[1]['condition']
-    instance.description = form_data[1]['description']
-    instance.price = form_data[2]['price']
-    instance.email = form_data[2]['email']
-    instance.phone_number = form_data[2]['phone_number']
-    instance.street = form_data[3]['street']
-    instance.city = form_data[3]['city']
-    instance.state = form_data[3]['state']
-    instance.zipcode = form_data[3]['zipcode']
-    instance.height_field = 100 
-    instance.width_field = 100
-    search = ZipcodeSearchEngine()
-    zipcode = search.by_zipcode(instance.zipcode)
-    instance.longitude = zipcode['Longitude']
-    instance.latitude = zipcode['Latitude']
-    instance.save()
+
+
+def process_form_data(form_list, request):
+    #import pdb; pdb.set_trace()
+    #ImageFormSet = modelformset_factory(Images,form=ImagesForm, extra=3)
+    if request.method == 'POST':
+        form_data = [form.cleaned_data for form in form_list]
+        form = Posting_Form_Final()
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.title = form_data[0]['title']
+        instance.image = form_data[0]['image']
+        import pdb; pdb.set_trace()
+        instance.condition = form_data[2]['condition']
+        instance.description = form_data[2]['description']
+        instance.price = form_data[1]['price']
+        instance.email = form_data[1]['email']
+        instance.phone_number = form_data[1]['phone_number']
+        instance.street = form_data[3]['street']
+        instance.city = form_data[3]['city']
+        instance.state = form_data[3]['state']
+        instance.zipcode = form_data[3]['zipcode']
+        instance.height_field = 100 
+        instance.width_field = 100
+        search = ZipcodeSearchEngine()
+        zipcode = search.by_zipcode(instance.zipcode)
+        instance.longitude = zipcode['Longitude']
+        instance.latitude = zipcode['Latitude']
+        import pdb; pdb.set_trace()
+
+        instance.save()
+        #Save images (multiple possible) per form
+        #images_form_instance.post = instance
+        #images_form_instance.image
+        images_form = ImagesForm(request.POST, request.FILES)
+        if images_form.is_valid():
+            photo = images_form.save()
+            data = {'is_valid': True, 'name': photo.image.name, 'url': photo.image.url}
+        else:
+            data = {'is_valid': False}
+
+
+        """
+        import pdb; pdb.set_trace()
+
+        formset = ImageFormSet(request.POST, request.FILES, queryset=Images.objects.none())
+        if formset.is_valid() and form.is_valid():
+            for form in formset.cleaned_data:
+                image = form['image']
+                photo = Images(post=instance, image=image)
+                photo.save()
+                messages.success(request,"Yeeew, check it out on the home page!")
+        else:
+               print(formset.errors, form.errors)
+    else:
+        formset = ImageFormSet(queryset=Images.objects.none())
+        """
     return form_list
 
 def homepage(request):
@@ -368,6 +426,68 @@ def post_create(request):
 	    'form': form,
     }
     return render(request, 'post_form.html', context)
+"""
+class UploadView(FormView):
+    model = Posting
+    template_name = 'multiple_images_form.html'
+    form_class = Posting_Form_Title
+    success_url = '/done/'
+    
+    def form_valid(self, form):
+        for each in form.cleaned_data['attachments']:
+            Attachment.objects.create(file=each)
+        return super(UploadView, self).form_valid(form)
+"""
+class ImagesUploadView(View):
+    def get(self, request):
+        photos_list = Images.objects.all()
+        return render(self.request, 'image_form/index.html', {'photos': photos_list})
+
+    def post(self, request):
+        form = ImagesForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.image.name, 'url': photo.image.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+class ProgressBarUploadView(View):
+    def get(self, request):
+        import pdb; pdb.set_trace()
+        photos_list = Images.objects.all()
+        return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
+    def post(self, request):
+        #import pdb; pdb.set_trace()
+        #print(request.POST)
+        #thing = self.request.POST.get('post')
+        #time.sleep(1)  # You don't need this line. This is just to delay the process so you can see the progress bar testing locally.
+        form = ImagesForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            #import pdb; pdb.set_trace()
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.image.name, 'url': photo.image.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+class DragAndDropUploadView(View):
+    def get(self, request):
+        photos_list = Photo.objects.all()
+        return render(self.request, 'photos/drag_and_drop_upload/index.html', {'photos': photos_list})
+
+    def post(self, request):
+        form = PhotoForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
 
 
-
+def clear_database(request):
+    for photo in Photo.objects.all():
+        photo.file.delete()
+        photo.delete()
+    return redirect(request.POST.get('next'))

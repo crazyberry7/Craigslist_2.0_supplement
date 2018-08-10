@@ -36,7 +36,7 @@ urlpatterns += [
 
     #path('search/', include('haystack.urls'), name= 'blah'),
     #path('search/', CatalogSearchView.as_view()),
-    path('search/', SearchView()),
+    path('search/', SearchView(), name='temp_homepage'),
     #path('', include('haystack.urls'), name='homepage'),
     path('', homepage, name='homepage'),
 
@@ -47,6 +47,9 @@ urlpatterns += [
 
     #path('accounts/', include('allauth.urls')),
     path('about/', TemplateView.as_view(template_name="about.html")), 
+
+    #images upload 
+    path('images', TemplateView.as_view(template_name='base.html'), name='home'), 
 ]
 
 if settings.DEBUG:
