@@ -1,0 +1,30 @@
+[2018-07-12 02:10:01,533][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-07-12 02:10:01,709][INFO ][node                     ] [Will o' the Wisp] version[2.4.3], pid[107], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-07-12 02:10:01,709][INFO ][node                     ] [Will o' the Wisp] initializing ...
+[2018-07-12 02:10:02,824][INFO ][plugins                  ] [Will o' the Wisp] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-07-12 02:10:02,856][INFO ][env                      ] [Will o' the Wisp] using [1] data paths, mounts [[/home (home)]], net usable_space [108.3gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-07-12 02:10:02,856][INFO ][env                      ] [Will o' the Wisp] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-07-12 02:10:04,475][INFO ][node                     ] [Will o' the Wisp] initialized
+[2018-07-12 02:10:04,475][INFO ][node                     ] [Will o' the Wisp] starting ...
+[2018-07-12 02:10:04,558][INFO ][transport                ] [Will o' the Wisp] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-07-12 02:10:04,564][INFO ][discovery                ] [Will o' the Wisp] elasticsearch/mszWSTPTTVmGC62_R-GKnQ
+[2018-07-12 02:10:08,603][INFO ][cluster.service          ] [Will o' the Wisp] new_master {Will o' the Wisp}{mszWSTPTTVmGC62_R-GKnQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-07-12 02:10:08,621][INFO ][http                     ] [Will o' the Wisp] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-07-12 02:10:08,621][INFO ][node                     ] [Will o' the Wisp] started
+[2018-07-12 02:10:08,683][INFO ][gateway                  ] [Will o' the Wisp] recovered [1] indices into cluster_state
+[2018-07-12 02:10:09,435][INFO ][cluster.routing.allocation] [Will o' the Wisp] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][1]] ...]).
+[2018-07-12 03:30:36,018][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-07-12 03:30:36,182][INFO ][node                     ] [Hector] version[2.4.3], pid[75], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-07-12 03:30:36,182][INFO ][node                     ] [Hector] initializing ...
+[2018-07-12 03:30:37,170][INFO ][plugins                  ] [Hector] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-07-12 03:30:37,200][INFO ][env                      ] [Hector] using [1] data paths, mounts [[/home (home)]], net usable_space [108.1gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-07-12 03:30:37,200][INFO ][env                      ] [Hector] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-07-12 03:30:38,786][INFO ][node                     ] [Hector] initialized
+[2018-07-12 03:30:38,786][INFO ][node                     ] [Hector] starting ...
+[2018-07-12 03:30:38,870][INFO ][transport                ] [Hector] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-07-12 03:30:38,875][INFO ][discovery                ] [Hector] elasticsearch/9tE69OTmTh6MuUEEXpH0Mw
+[2018-07-12 03:30:42,914][INFO ][cluster.service          ] [Hector] new_master {Hector}{9tE69OTmTh6MuUEEXpH0Mw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-07-12 03:30:42,934][INFO ][http                     ] [Hector] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-07-12 03:30:42,934][INFO ][node                     ] [Hector] started
+[2018-07-12 03:30:43,016][INFO ][gateway                  ] [Hector] recovered [1] indices into cluster_state
+[2018-07-12 03:30:43,741][INFO ][cluster.routing.allocation] [Hector] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][1]] ...]).

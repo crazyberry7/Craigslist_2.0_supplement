@@ -1,15 +1,15 @@
-[2018-07-31 18:53:01,183][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
-[2018-07-31 18:53:01,347][INFO ][node                     ] [Devil Hunter Gabriel] version[2.4.3], pid[35], build[d38a34e/2016-12-07T16:28:56Z]
-[2018-07-31 18:53:01,347][INFO ][node                     ] [Devil Hunter Gabriel] initializing ...
-[2018-07-31 18:53:02,435][INFO ][plugins                  ] [Devil Hunter Gabriel] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
-[2018-07-31 18:53:02,457][INFO ][env                      ] [Devil Hunter Gabriel] using [1] data paths, mounts [[/home (home)]], net usable_space [108.9gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
-[2018-07-31 18:53:02,457][INFO ][env                      ] [Devil Hunter Gabriel] heap size [989.8mb], compressed ordinary object pointers [true]
-[2018-07-31 18:53:04,118][INFO ][node                     ] [Devil Hunter Gabriel] initialized
-[2018-07-31 18:53:04,118][INFO ][node                     ] [Devil Hunter Gabriel] starting ...
-[2018-07-31 18:53:04,194][INFO ][transport                ] [Devil Hunter Gabriel] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
-[2018-07-31 18:53:04,198][INFO ][discovery                ] [Devil Hunter Gabriel] elasticsearch/HiP3GnSeRHaMqq0EJ9nAKw
-[2018-07-31 18:53:08,241][INFO ][cluster.service          ] [Devil Hunter Gabriel] new_master {Devil Hunter Gabriel}{HiP3GnSeRHaMqq0EJ9nAKw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
-[2018-07-31 18:53:08,262][INFO ][http                     ] [Devil Hunter Gabriel] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
-[2018-07-31 18:53:08,262][INFO ][node                     ] [Devil Hunter Gabriel] started
-[2018-07-31 18:53:08,348][INFO ][gateway                  ] [Devil Hunter Gabriel] recovered [1] indices into cluster_state
-[2018-07-31 18:53:09,097][INFO ][cluster.routing.allocation] [Devil Hunter Gabriel] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][0]] ...]).
+[2018-08-23 16:57:35,562][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-08-23 16:57:35,870][INFO ][node                     ] [Frenzy] version[2.4.3], pid[58], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-08-23 16:57:35,870][INFO ][node                     ] [Frenzy] initializing ...
+[2018-08-23 16:57:37,776][INFO ][plugins                  ] [Frenzy] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-08-23 16:57:37,824][INFO ][env                      ] [Frenzy] using [1] data paths, mounts [[/home (home)]], net usable_space [102.1gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-08-23 16:57:37,825][INFO ][env                      ] [Frenzy] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-08-23 16:57:40,533][INFO ][node                     ] [Frenzy] initialized
+[2018-08-23 16:57:40,533][INFO ][node                     ] [Frenzy] starting ...
+[2018-08-23 16:57:40,644][INFO ][transport                ] [Frenzy] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-08-23 16:57:40,653][INFO ][discovery                ] [Frenzy] elasticsearch/3EvLaYcyTfCDoom6pUGG3A
+[2018-08-23 16:57:44,737][INFO ][cluster.service          ] [Frenzy] new_master {Frenzy}{3EvLaYcyTfCDoom6pUGG3A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-08-23 16:57:44,808][INFO ][http                     ] [Frenzy] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-08-23 16:57:44,809][INFO ][node                     ] [Frenzy] started
+[2018-08-23 16:57:44,944][INFO ][gateway                  ] [Frenzy] recovered [1] indices into cluster_state
+[2018-08-23 16:57:46,203][INFO ][cluster.routing.allocation] [Frenzy] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][1]] ...]).

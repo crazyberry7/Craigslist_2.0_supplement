@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+ <head>	
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  	<meta http-equiv="x-ua-compatible" content="ie=edge">	
+	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">-->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap Dropdown Menu -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- end -->
+	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-alert.js"></script>
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+        <!-- Devbridge Autocomplete Jquery -->
+        <!--<script src="{% static 'jquery-2.1.1.js' %}"></script>-->
+        <script src="{% static 'jquery.autocomplete.js' %}"></script>
+        <script type="text/javascript" language="javascript" src="{% static 'final_final_zipcode.js' %}"></script>
+
+	<!-- Awesome Font -->
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">	
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap (MDB) -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+	 
+        <!-- Google Sign In -->
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=init"></script>
+	<meta name="google-signin-client_id" content="822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com">
+
+
+   </head>
+
+<style>
+
+body {
+  margin: 0px;
+  text-rendering: optimizeLegibility;
+  min-height: 100%;
+  min-width: 300px;
+}
+
+.search {
+  width: 50%; 
+  position: relative
+}
+
+.searchTerm {
+  float: center;
+  left: 500px;
+  width: 60%;
+  border: 1px solid #232f3f;
+  padding: 1px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+  text-indent: 10px;
+  font-size: 20px;
+
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: relative;  
+  left: -10px;
+  width: 36px;
+  top: 4.6px;
+  height: 33.6px;
+  border: 0px solid #232f3f;
+  /*background: #00B4CC;*/
+  background: #ffbb33;
+  text-align: center;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  left: 20%;
+  width: 100%;
+  position: absolute;
+  top: -33px;
+  /*border: 1px solid #00B4CC;*/
+
+  transform: translate(50px, 50px);
+}
+
+.g-signin2{
+  position: relative;
+  /*border: 1px solid #00B4CC;*/
+  height: 35px;
+  top: 2.1px;
+  left: 100px;
+  float: left;
+}
+
+#nav-bar{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  overflow: hidden;
+  border: 0px solid #00B4CC;
+  height: 80px;
+  width: 100%;
+  /**background: #232f3f;**/
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 220px;
+  margin: 30px;
+  text-align: center;
+  line-height: 10px;
+  font-size: 30px;
+}
+.item {
+   background-color: #ffffff;
+   width: 100%;
+   height: 100%;
+}
+
+.content {
+   width: 100%;
+   min-height: 100%;
+
+}
+.card{
+   width: 100%;
+   min-height: 100%;
+}
+.grid {
+  display:grid;
+  grid-gap: 5px;
+  column-gap: 15px;
+  grid-row-gap: 8px;
+  grid-template-columns: repeat(auto-fit, 192px);
+  grid-auto-rows: 0px;
+  margin-left: 42px;
+  margin-right: 42px;
+}
+
+.suggestion_row {
+  background-color: #ffffff;
+  width: 15vw;
+  height: 60px;
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+  text-indent: 10px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  cursor:pointer;
+  margin: 5px 0px;
+}
+
+.suggestion_row:hover {
+  background-color: #d9f2e6;
+}
+
+/**
+input[type="text"], input[type="search"], textarea {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #ccc !important;
+}
+**/
+input[type="text"], textarea {
+   box-shadow: none; !important;
+   -webkit-box-shadow:none;
+}
+.form-control.form-control-md {
+  width: 15vw;
+  height: 40px;
+  font-size: 14px;
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+
+}
+.form-control.form-control-lg {
+  width: 20vw; 
+  height: 40px;
+  font-size: 14px;
+  font-weight:400;
+  color: #4a4a4a;
+  display:inline-block;
+
+}
+.halfCircleRight {
+  position: relative;
+  height:40px;
+  width:35px;
+  border-radius: 0 90px 90px 0;
+  border: 0;
+  background: #00e6ac;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+.halfCircleRight:hover {
+  background-color: #00cc99;
+}
+
+
+
+
+.halfCircleLeft {
+  position: static;
+  height:40px;
+  width:35px;
+  border-radius: 90px 0 0 90px;
+  background:white;
+  right: 91%;
+  white-space:nowrap;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 48px;
+}
+.search_bar<div {
+  float: center
+}
+
+.location-info {
+  margin-left: 20px;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.main {
+  margin-left: -20px;
+  margin-right: 20px;
+}
+
+.divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.post_user_bar {
+  position: relative;
+  text-align: right;
+  display: inline-block;
+  width: 22vw;
+}
+
+.bd-example-modal-lg .modal-dialog{
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+}
+.bd-example-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+}
+.all_encompassing_menu {
+  white-space: nowrap;
+}
+label, input {
+  display: block;
+
+}
+label {
+  margin-right:5px;
+}
+label_one {
+  margin-right:10px;
+}
+h1, h2, h3, h4 {
+  display: inline;
+}
+
+.lowercase {
+  text-transform: lowercase; 
+}
+.uppercase { 
+  text-transform: uppercase; 
+}
+.capitalize { 
+  text-transform: capitalize; 
+}
+.container {
+  margin: 0 auto;
+  width: 700px;
+  height: 500px;
+}
+.col-8 {
+  margin: 0 auto;
+}
+
+#name_label {
+  text-align: center;
+  vertical-align: middle;
+}
+#email_label {
+  text-align: center;
+  vertical-align: middle;
+}
+#desc_label {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#change_pw {
+  border:1px solid #0000FF;
+}
+.offset-5 {
+  text-align: center;
+}
+.img_blargh {
+  position: relative;
+  left: -4%;
+} 
+
+
+.fas {
+ color: #2BBBAD;
+}
+</style>
+<nav class="navbar navbar-dark default-color">
+
+  <div class="all_encompassing_menu"> 
+       <form class="form-inline my-4 my-lg-4 ml-4 mr-4" id="searchform" action="" method="get" autocomplete="off">
+	<!-- Random Logo -->
+	<div class="img_blargh">
+ 	<a href="{% url 'temp_homepage' %} "> <img src="https://static.offerup.com/web/images/header/logo-white@2x.3a2e4589.png" height="27" width="100"></img></a>	
+	</div>
+	 <div class="halfCircleLeft">
+	      <i class="fas fa-search fa-2x"></i>
+	    </div>
+
+
+       	<div class="search_bar">
+            {% if query %}
+           <input class="form-control form-control-lg" onClick="this.select();" type="search" name="q" id="id_q" value={{ query }} aria-label="Search"  style="outline: none; border-radius: 0px; border-top: 0; border-right: 0; border-left: 0; border-bottom: 0;  box-shadow: none; !important; -webkit-box-shadow:none;">
+
+        {% else %}
+	   <input class="form-control form-control-lg" onClick="this.select();" type="search" name="q" id="id_q" placeholder="Search" aria-label="Search"  style="outline: none; border-radius: 0px; border-top: 0; border-right: 0; border-left: 0; border-bottom: 0;  box-shadow: none; !important; -webkit-box-shadow:none;">
+
+        {% endif %}
+
+	{% if query %}
+           <input class="form-control form-control-md" onClick="this.select();" type="text" name="zipcode" maxlength="5" id="id_zipcode_final" autocomplete="off" value= {{ zipcode }} aria-label="Search" style="outline: none; border-radius: 0px; border-top: 0; border-right: 0; border-left: 0; border-bottom: 0;  box-shadow: none; !important; -webkit-box-shadow:none;">
+        {% else %}
+	   <input class="form-control form-control-md" onClick="this.select();" type="text" name="zipcode" maxlength="5" id="id_zipcode_final" autocomplete="off" placeholder="Location" aria-label="Search" style="outline: none; border-radius: 0px; border-top: 0; border-right: 0; border-left: 0; border-bottom: 0;  box-shadow: none; !important; -webkit-box-shadow:none;">
+
+        {% endif %}
+        </div> 
+	<button type="submit" class="halfCircleRight"> GO </button>
+	{% if user.is_authenticated %}
+  		<div class="post_user_bar">
+			<div class="dropdown">
+		  	<a class="btn btn-primary" href= "{% url 'create' %}" role="button" style="font-size:11px;"> Post </a>  
+
+
+		        <button class="btn btn-primary dropdown-toggle" type="button" style="font-size:11px;" data-toggle="dropdown"> {{ user.username }}</button>
+		    	<ul class="dropdown-menu">
+		      		<li><a href= # style="font-size:14px;"> My Profile</a></li>
+		      		<li><a href= "{% url 'my_settings' %}"  style="font-size:14px;">Settings</a></li>
+		      		<li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
+		    	</ul>
+			</div>
+                </div>
+        {% else %}
+		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+		<div class="post_user_bar">
+		    	<a class="btn btn-primary" href= "{% url 'login' %}" role="button" style="font-size:10px;"> login </a> 
+		    <a class="btn btn-primary" href= "{% url 'signup_view' %}" role="button" style="font-size:10px;"> signup </a> 
+		</div>
+	{% endif %}
+ </div>
+
+</form>
+
+     </nav>
+  
+
+  <body>
+   <!-- search.html aka search results content -->
+  {% block content %} 
+  {% endblock %}
+  
+  {% block my_settings %}
+  {% endblock %}
+     <script>
+	function modal(){
+       $('.modal').modal('show');
+       setTimeout(function () {
+       	$('.modal').modal('hide');
+       }, 3000);
+    }
+
+        function resizeGridItem(item){
+	  grid = document.getElementsByClassName("grid")[0];
+	  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+	  rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+	  rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+	    item.style.gridRowEnd = "span "+rowSpan;
+	}
+
+	function resizeAllGridItems(){
+	  allItems = document.getElementsByClassName("item");
+	  for(x=0;x<allItems.length;x++){
+	    resizeGridItem(allItems[x]);
+	  }
+	}
+
+	function resizeInstance(instance){
+		item = instance.elements[0];
+	  resizeGridItem(item);
+	}
+
+	window.onload = resizeAllGridItems;
+	window.addEventListener("resize", resizeAllGridItems);
+
+	allItems = document.getElementsByClassName("item");
+	for(x=0;x<allItems.length;x++){
+	  imagesLoaded( allItems[x], resizeInstance);
+	}
+        
+        $('#id_zipcode_final').autocomplete({
+            lookup: data,
+            lookupLimit: 5,
+            minChars: 1,
+            triggerSelectOnValidInput: false,
+            lookupFilter: function (suggestion, query, queryLowerCase) {
+                return suggestion.value.toLowerCase().indexOf(queryLowerCase) === 0;
+             },
+
+           formatResult: function (suggestion) {
+                return '<div class="suggestion_row">' + suggestion.city + ", " + suggestion.state + " " + suggestion.value + ', USA' +'</div>';
+           },
+         });
+      $('searchform').submit(function(event) {
+ 	  loadAjax();
+	  event.preventDefault()
+	});
+
+
+      	/** 
+	$(document).ready(function () {
+	$('#update_profile').click(function (e) {
+  	e.preventDefault()
+  	$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This is a success message</div>');
+	})})
+	**/
+
+
+        	
+ 	/*	
+	   gapi.load('auth2', initSigninV2);
+	   function initSigninV2() {
+
+			gapi.auth2.init({
+				client_id: '822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com'
+	   		}).then(function (authInstance) {
+		});
+	   }
+	
+	   function signout() {
+    		
+		var auth2 = gapi.auth2.getAuthInstance();
+    		auth2.signOut().then(function authInstance () {
+      		console.log('User signed out.');
+    		});
+  	   }
+  	*/
+	</script>
+
+</body>
+</html>
+

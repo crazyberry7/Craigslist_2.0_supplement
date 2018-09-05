@@ -1,0 +1,107 @@
+{% load static %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Photos Library - Simple is Better Than Complex{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+      .page-header {
+        margin-top: 0;
+      }
+    </style>
+   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-file-upload/vendor/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'js/jquery-file-upload/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'js/jquery-file-upload/jquery.fileupload.js' %}"></script>
+  <script src="{% static 'js/progress-bar-upload.js' %}"></script>
+
+
+  </head>
+
+
+
+<h1> Image Form **MODIFICATION IN PROGRESS* </h1>
+<div class="col-md-9">
+  <div style="margin-bottom: 20px;">
+    <form action="create" method="post" enctype='multipart/form-data'>
+	{% csrf_token %}
+	<table>
+	<!--
+	{{ wizard.management_form }}
+	    {{ wizard.form }}
+	-->
+	    <button type="button" class="btn btn-primary upload_photo_data_only">
+	      <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+	    </button>
+
+	    <input id="fileupload" type="file" name="image" multiple
+		   style="display: none;"
+		   data-url="{% url 'create' %}"
+		   data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+	 	</table>
+           <input type="submit" value="submit" class="js-upload-photos" />
+
+   </form>
+  
+  </div>
+
+  <table id="gallery" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for photo in photos %}
+        <tr>
+          <td><a href="{{ photo.image.url }}">{{ photo.image.name }}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Uploading...</h4>
+        </div>
+        <div class="modal-body">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<html>
+<p> Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+<form action="create" method="post" enctype='multipart/form-data'>
+{% csrf_token %}
+<table>
+{{ wizard.management_form }}
+{% if wizard.form.forms %}
+    {{ wizard.form.management_form }}
+    {% for form in wizard.form.forms %}
+        {{ form }}
+    {% endfor %}
+{% else %}
+    {{ wizard.form }}
+{% endif %}
+</table>
+{% if wizard.steps.prev %}
+    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}"> "first step" </button>
+    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}"> "prev step" </button>
+{% endif %}
+<input type="submit" value="submit"/>
+</form>
+</html>
+-->

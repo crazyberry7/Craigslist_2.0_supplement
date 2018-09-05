@@ -1,0 +1,247 @@
+[2018-07-30 19:26:26,474][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-07-30 19:26:26,648][INFO ][node                     ] [Tag] version[2.4.3], pid[64], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-07-30 19:26:26,648][INFO ][node                     ] [Tag] initializing ...
+[2018-07-30 19:26:27,681][INFO ][plugins                  ] [Tag] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-07-30 19:26:27,716][INFO ][env                      ] [Tag] using [1] data paths, mounts [[/home (home)]], net usable_space [105.9gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-07-30 19:26:27,717][INFO ][env                      ] [Tag] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-07-30 19:26:29,354][INFO ][node                     ] [Tag] initialized
+[2018-07-30 19:26:29,354][INFO ][node                     ] [Tag] starting ...
+[2018-07-30 19:26:29,434][INFO ][transport                ] [Tag] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-07-30 19:26:29,438][INFO ][discovery                ] [Tag] elasticsearch/PdDluW9mSzuy8q9HPilhVw
+[2018-07-30 19:26:33,482][INFO ][cluster.service          ] [Tag] new_master {Tag}{PdDluW9mSzuy8q9HPilhVw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-07-30 19:26:33,500][INFO ][http                     ] [Tag] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-07-30 19:26:33,500][INFO ][node                     ] [Tag] started
+[2018-07-30 19:26:33,568][INFO ][gateway                  ] [Tag] recovered [1] indices into cluster_state
+[2018-07-30 19:26:33,960][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,963][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,971][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,974][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,982][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,983][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,987][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:33,988][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,066][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,067][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,070][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][4]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,071][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,087][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][3]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,088][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,095][DEBUG][action.search            ] [Tag] All shards failed for phase: [query]
+RemoteTransportException[[Tag][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][2]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1038)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:852)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:656)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,095][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:874)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:852)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:389)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-07-30 19:26:34,433][INFO ][cluster.routing.allocation] [Tag] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][0]] ...]).

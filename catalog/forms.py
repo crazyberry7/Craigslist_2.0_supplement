@@ -34,7 +34,7 @@ class Posting_Form_Final(forms.ModelForm):
 class ImagesForm(forms.ModelForm):
         class Meta:
              model = Images
-             fields = ('image', 'post', )
+             fields = ('image',)
 
 class Posting_Form_Title(forms.ModelForm):
 	class Meta:

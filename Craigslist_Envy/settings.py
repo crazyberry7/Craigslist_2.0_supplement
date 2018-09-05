@@ -25,7 +25,7 @@ SECRET_KEY = '0az&qh$hackc%%*=!-f1%5odd*vw#b9@f99ti)6@bzjh#mex7u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['abf15a75.ngrok.io', '127.0.0.1', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['abf15a75.ngrok.io', '127.0.0.1', '127.0.0.1:8000', '192.168.182.20']
 
 SITE_ID = 1
 # Application definition
@@ -144,6 +144,6 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")

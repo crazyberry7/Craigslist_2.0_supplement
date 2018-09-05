@@ -252,6 +252,9 @@ class SearchView(object):
 
 
 TEMPLATES = {"Title":"OrderWizard/image_form.html", "Description":"OrderWizard/contact_form.html","Contact":"OrderWizard/contact_form.html", "Location":"OrderWizard/contact_form.html"}
+
+#TEMPLATES = {"Title":"OrderWizard/contact_form.html", "Description":"OrderWizard/contact_form.html","Contact":"OrderWizard/contact_form.html", "Location":"OrderWizard/contact_form.html"}
+
 class OrderWizard(SessionWizardView):
         #template_name = "contact_form.html"
         file_storage = FileSystemStorage(location= os.path.join(settings.MEDIA_ROOT, 'photos'))
@@ -267,27 +270,31 @@ class OrderWizard(SessionWizardView):
             kwargs = super(OrderWizard, self).get_form_kwargs(step)
             kwargs['request'] = self.request
             return kwargs 
-        """
+
         def get(self, request):
             #import pdb; pdb.set_trace()
             photos_list =  []#Images.objects.all()
             return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
+        """ 
         def post(self, request):
             import pdb; pdb.set_trace()
         #print(request.POST)
         #thing = self.request.POST.get('post')
         #time.sleep(1)  # You don't need this line. This is just to delay the process so you can see the progress bar testing locally.
-            form = ImagesForm(self.request.POST, self.request.FILES)
+            #form = ImagesForm(request.POST, request.FILES)
+             #old images layout and form
+            form = Posting_Form_Title(request.POST, request.FILES)
+            #instance = form.save(commit=False)
+            #instance.image = self.request.FILES['Title-image']
+            #instance.save()
             if form.is_valid():
             #import pdb; pdb.set_trace()
-                photo = form.save()
+                photo = form.save(commit=False)
                 data = {'is_valid': True, 'name': photo.image.name, 'url': photo.image.url}
             else:
                 data = {'is_valid': False}
             return JsonResponse(data)
-
-
-
+   
 def process_form_data(form_list, request):
     #import pdb; pdb.set_trace()
     #ImageFormSet = modelformset_factory(Images,form=ImagesForm, extra=3)
@@ -456,9 +463,9 @@ class ProgressBarUploadView(View):
     def get(self, request):
         import pdb; pdb.set_trace()
         photos_list = Images.objects.all()
-        return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
+        #return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
     def post(self, request):
-        #import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         #print(request.POST)
         #thing = self.request.POST.get('post')
         #time.sleep(1)  # You don't need this line. This is just to delay the process so you can see the progress bar testing locally.

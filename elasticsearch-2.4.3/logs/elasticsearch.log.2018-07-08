@@ -1,0 +1,15 @@
+[2018-07-08 01:40:31,022][WARN ][bootstrap                ] unable to install syscall filter: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+[2018-07-08 01:40:31,199][INFO ][node                     ] [Jimmy Woo] version[2.4.3], pid[103], build[d38a34e/2016-12-07T16:28:56Z]
+[2018-07-08 01:40:31,199][INFO ][node                     ] [Jimmy Woo] initializing ...
+[2018-07-08 01:40:32,218][INFO ][plugins                  ] [Jimmy Woo] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-07-08 01:40:32,251][INFO ][env                      ] [Jimmy Woo] using [1] data paths, mounts [[/home (home)]], net usable_space [110.6gb], net total_space [237.3gb], spins? [unknown], types [lxfs]
+[2018-07-08 01:40:32,251][INFO ][env                      ] [Jimmy Woo] heap size [989.8mb], compressed ordinary object pointers [true]
+[2018-07-08 01:40:33,990][INFO ][node                     ] [Jimmy Woo] initialized
+[2018-07-08 01:40:33,990][INFO ][node                     ] [Jimmy Woo] starting ...
+[2018-07-08 01:40:34,076][INFO ][transport                ] [Jimmy Woo] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-07-08 01:40:34,081][INFO ][discovery                ] [Jimmy Woo] elasticsearch/ujp7WmP0RSyrrqTJ1XZYaQ
+[2018-07-08 01:40:38,120][INFO ][cluster.service          ] [Jimmy Woo] new_master {Jimmy Woo}{ujp7WmP0RSyrrqTJ1XZYaQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-07-08 01:40:38,137][INFO ][http                     ] [Jimmy Woo] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-07-08 01:40:38,137][INFO ][node                     ] [Jimmy Woo] started
+[2018-07-08 01:40:38,202][INFO ][gateway                  ] [Jimmy Woo] recovered [1] indices into cluster_state
+[2018-07-08 01:40:38,962][INFO ][cluster.routing.allocation] [Jimmy Woo] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][1]] ...]).

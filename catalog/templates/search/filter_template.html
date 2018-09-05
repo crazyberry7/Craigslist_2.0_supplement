@@ -1,0 +1,113 @@
+{% load static %}
+
+<html>
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+.bd-example-modal-lg .modal-dialog{
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+  }
+  
+.bd-example-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+}
+
+
+</style>
+<body>
+
+<button type="button" class="btn btn-primary" onclick="modal();">Open and close in 3 secs</button>
+
+<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="width: 48px">
+            <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{user.username}}
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#"  style="font-size:14px;">My Profile</a></li>
+      <li><a href= "{% url 'my_settings' %}"  style="font-size:14px;">Settings</a></li>
+      <li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class-"dropdown">
+ <button class="btn btn-primary dropdown-toggle" type="button" style="font-size:11px;" data-toggle="dropdown"> {{ user.username }}</button>
+		    	<ul class="dropdown-menu">
+		      		<li><a href= # style="font-size:14px;"> My Profile</a></li>
+		      		<li><a href= "{% url 'my_settings' %}"  style="font-size:14px;">Settings</a></li>
+		      		<li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
+		    	</ul>
+</div>
+</body>
+<script>
+    function modal(){
+       $('.modal').modal('show');
+       setTimeout(function () {
+       	$('.modal').modal('hide');
+       }, 3000);
+    }    
+
+
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
+
+
+
+<!--
+<form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" /> </form> 
+
+<form action="" method="get">
+	<input name="q" id="q" type="text">
+	<input type="submit">	
+</form>
+    <p>
+    Search Results in:
+    {{ city }}
+    <br>
+    Query: {{ query }}
+    <br> <br>
+    {% for obj in sqs %}
+            ["{{ obj.object.title }}" : ${{ obj.object.price }}]
+    {% endfor %}
+    {{ zipcode }}
+
+    </p>
+-->
+</html>
+
