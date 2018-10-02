@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.gis.geos import Point
 #from users.models import CustomUser
 # Create your models here.
-
+#hi
 
 class Posting(models.Model):
 
