@@ -27,14 +27,13 @@ urlpatterns += [
 
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup_view'),
-    path('users/logout/', views.logout, name='logout_view'),
-    #path('users/login/', login, {'next_page': '/'}),
-    path('', include('social_django.urls', namespace='social')),
-    #path('accounts/', include('allauth.urls')),
-    path('about/', TemplateView.as_view(template_name="about.html")), 
 
-    #images upload 
-    path('images', TemplateView.as_view(template_name='base.html'), name='home'), 
+    #Google Sign-In
+    path('', include('social_django.urls', namespace='social')),
+    path('about/', TemplateView.as_view(template_name="about.html")),
+
+    #images upload
+    path('images', TemplateView.as_view(template_name='base.html'), name='home'),
 ]
 
 if settings.DEBUG:
