@@ -311,6 +311,8 @@ h1, h2, h3, h4 {
   margin: 0 auto;
   width: 700px;
   height: 500px;
+  font-size: 18px;
+
 }
 .col-8 {
   margin: 0 auto;
@@ -410,6 +412,10 @@ h1, h2, h3, h4 {
   
   {% block my_settings %}
   {% endblock %}
+  {% block steps_page %}
+  {% endblock %}
+  
+
      <script>
 	function modal(){
        $('.modal').modal('show');

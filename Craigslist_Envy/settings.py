@@ -54,8 +54,8 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 MEDIA_URL = "/media/"
 
 
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/search'
+LOGIN_REDIRECT_URL = '/search'
 LOGIN_URL = '/users/login'
 MIDDLEWARE = (
     'whitenoise.middleware.WhiteNoiseMiddleware',  

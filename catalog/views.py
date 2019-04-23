@@ -256,26 +256,16 @@ TEMPLATES = {"Title":"OrderWizard/image_form.html", "Description":"OrderWizard/c
 #TEMPLATES = {"Title":"OrderWizard/contact_form.html", "Description":"OrderWizard/contact_form.html","Contact":"OrderWizard/contact_form.html", "Location":"OrderWizard/contact_form.html"}
 
 class OrderWizard(SessionWizardView):
-        #template_name = "contact_form.html"
+        template_name = "contact_form.html"
         file_storage = FileSystemStorage(location= os.path.join(settings.MEDIA_ROOT, 'photos'))
-        def get_template_names(self):
-            #import pdb; pdb.set_trace()
-            return [TEMPLATES[self.steps.current]]
+
         def done(self, form_list, form_dict, **kwargs): 
-            import pdb; pdb.set_trace()
             form_data = process_form_data(form_list, self.request)
             return render_to_response('done.html', {'form_data': form_data})
         """
-        def get_form_kwargs(self, step):
-            kwargs = super(OrderWizard, self).get_form_kwargs(step)
-            kwargs['request'] = self.request
-            return kwargs 
-
         def get(self, request):
-            #import pdb; pdb.set_trace()
             photos_list =  []#Images.objects.all()
             return render(self.request, 'OrderWizard/image_form.html', {'photos': photos_list})
-        """ 
         def post(self, request):
             import pdb; pdb.set_trace()
         #print(request.POST)
@@ -294,9 +284,8 @@ class OrderWizard(SessionWizardView):
             else:
                 data = {'is_valid': False}
             return JsonResponse(data)
-   
+        """
 def process_form_data(form_list, request):
-    #import pdb; pdb.set_trace()
     #ImageFormSet = modelformset_factory(Images,form=ImagesForm, extra=3)
     if request.method == 'POST':
         form_data = [form.cleaned_data for form in form_list]
@@ -305,12 +294,11 @@ def process_form_data(form_list, request):
         instance.user = request.user
         instance.title = form_data[0]['title']
         instance.image = form_data[0]['image']
-        import pdb; pdb.set_trace()
-        instance.condition = form_data[2]['condition']
-        instance.description = form_data[2]['description']
-        instance.price = form_data[1]['price']
-        instance.email = form_data[1]['email']
-        instance.phone_number = form_data[1]['phone_number']
+        instance.condition = form_data[1]['condition']
+        instance.description = form_data[1]['description']
+        instance.price = form_data[2]['price']
+        instance.email = form_data[2]['email']
+        instance.phone_number = form_data[2]['phone_number']
         instance.street = form_data[3]['street']
         instance.city = form_data[3]['city']
         instance.state = form_data[3]['state']
@@ -321,8 +309,6 @@ def process_form_data(form_list, request):
         zipcode = search.by_zipcode(instance.zipcode)
         instance.longitude = zipcode['Longitude']
         instance.latitude = zipcode['Latitude']
-        import pdb; pdb.set_trace()
-
         instance.save()
         #Save images (multiple possible) per form
         #images_form_instance.post = instance
@@ -347,7 +333,6 @@ def process_form_data(form_list, request):
                 messages.success(request,"Yeeew, check it out on the home page!")
         else:
                print(formset.errors, form.errors)
-    else:
         formset = ImageFormSet(queryset=Images.objects.none())
         """
     return form_list
@@ -394,7 +379,6 @@ def homepage(request):
         lat = location_dict['latitude']
         longitude = location_dict['longitude']
         zip_code = location_dict['postal_code']
-        #sqs = SearchQuerySet()
         sqs = SearchQuerySet().dwithin('location', Point(longitude, lat), D(mi=30))
         f = PostingFilter(request.GET, queryset=sqs)
         context = {
@@ -405,6 +389,7 @@ def homepage(request):
   	'query': query,
         }
     return render(request, 'search/filter_template.html', context)
+
 def post_detail(request, id=None):
    instance = get_object_or_404(Posting, id=id)
    context = {

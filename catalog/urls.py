@@ -19,8 +19,8 @@ urlpatterns = [
     #path('', views.index, name='index'),
     path('item/detail/<int:id>', views.post_detail, name='post_detail'),
     #path('post/create', views.post_create)
-    #path('item/created', login_required(OrderWizard.as_view([Posting_Form_Title, Posting_Form_Description, Posting_Form_Contact, Posting_Form_Location])), name='create'),
-    path('item/create', login_required(OrderWizard.as_view(FORMS)), name='create'),
+    path('item/create', login_required(OrderWizard.as_view([Posting_Form_Title, Posting_Form_Description, Posting_Form_Contact, Posting_Form_Location])), name='create'),
+    #path('item/create', login_required(OrderWizard.as_view(FORMS)), name='create'),
     path('accounts/settings', my_profile, name='my_settings'),
     path('basic_images_upload', views.ImagesUploadView.as_view(), name='basic_images_upload'),
     path('progress-bar-upload', login_required(views.ProgressBarUploadView.as_view()), name='progress_bar_upload'),
