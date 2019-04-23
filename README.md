@@ -4,6 +4,7 @@ Main Project
 Dependencies (in addition to those in requirements.txt)
 
 GDAL - pip3 install gdal
+
 Java8 (elasticsearch not compatible w/ Java 10)
 
 Important:
