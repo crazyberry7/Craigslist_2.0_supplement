@@ -11,16 +11,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
+
 	<!-- Bootstrap Dropdown Menu -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- end -->
 	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-alert.js"></script>
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+
 
         <!-- Devbridge Autocomplete Jquery -->
         <!--<script src="{% static 'jquery-2.1.1.js' %}"></script>-->
@@ -35,12 +36,6 @@
 	<!-- Material Design Bootstrap (MDB) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
 	 
-        <!-- Google Sign In -->
-	<script src="https://apis.google.com/js/platform.js"></script>
-	<script src="https://apis.google.com/js/platform.js?onload=init"></script>
-	<meta name="google-signin-client_id" content="822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com">
-
-
    </head>
 
 <style>
@@ -353,8 +348,12 @@ h1, h2, h3, h4 {
        <form class="form-inline my-4 my-lg-4 ml-4 mr-4" id="searchform" action="" method="get" autocomplete="off">
 	<!-- Random Logo -->
 	<div class="img_blargh">
- 	<a href="{% url 'temp_homepage' %} "> <img src="https://static.offerup.com/web/images/header/logo-white@2x.3a2e4589.png" height="27" width="100"></img></a>	
-	</div>
+	<a href="{% url 'temp_homepage' %} "> <img src="/static/images/cool_logo.png" height="55" width="250"></img></a>	
+
+</div>
+&nbsp &nbsp &nbsp &nbsp &nbsp 
+&nbsp &nbsp &nbsp &nbsp &nbsp 
+
 	 <div class="halfCircleLeft">
 	      <i class="fas fa-search fa-2x"></i>
 	    </div>
@@ -377,25 +376,26 @@ h1, h2, h3, h4 {
         {% endif %}
         </div> 
 	<button type="submit" class="halfCircleRight"> GO </button>
+         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
 	{% if user.is_authenticated %}
-  		<div class="post_user_bar">
-			<div class="dropdown">
-		  	<a class="btn btn-primary" href= "{% url 'create' %}" role="button" style="font-size:11px;"> Post </a>  
+		<a class="btn btn-primary" href= "{% url 'create' %}" role="button" style="font-size:12px;"> Post </a>  
+		&nbsp &nbsp &nbsp 
+		
+		<div class="dropdown show">
+		  <button class="btn btn-primary dropdown-toggle" type="button" style="font-size:12px;" data-toggle="dropdown">
+		    {{ user.username }}
+		  </button>
 
-
-		        <button class="btn btn-primary dropdown-toggle" type="button" style="font-size:11px;" data-toggle="dropdown"> {{ user.username }}</button>
-		    	<ul class="dropdown-menu">
-		      		<li><a href= # style="font-size:14px;"> My Profile</a></li>
-		      		<li><a href= "{% url 'my_settings' %}"  style="font-size:14px;">Settings</a></li>
-		      		<li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
-		    	</ul>
-			</div>
-                </div>
+		  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+		    <li><a href= "{% url 'my_settings' %}"  style="font-size:14px;">Settings</a></li>
+	      	    <li><a href= "{% url 'logout' %}" role="button" style="font-size:14px;"> Log Out </a></li>
+		  </div>
+		</div>
+                
         {% else %}
-		<!--<div class="g-signin2" data-onsuccess="onSignIn"></div> -->
 		<div class="post_user_bar">
-		    	<a class="btn btn-primary" href= "{% url 'login' %}" role="button" style="font-size:10px;"> login </a> 
-		    <a class="btn btn-primary" href= "{% url 'signup_view' %}" role="button" style="font-size:10px;"> signup </a> 
+		    	<a class="btn btn-primary" href= "{% url 'login' %}" role="button" style="font-size:12px;"> login </a> 
+		    <a class="btn btn-primary" href= "{% url 'signup_view' %}" role="button" style="font-size:12px;"> signup </a> 
 		</div>
 	{% endif %}
  </div>
@@ -465,40 +465,10 @@ h1, h2, h3, h4 {
                 return '<div class="suggestion_row">' + suggestion.city + ", " + suggestion.state + " " + suggestion.value + ', USA' +'</div>';
            },
          });
-      $('searchform').submit(function(event) {
+        $('searchform').submit(function(event) {
  	  loadAjax();
 	  event.preventDefault()
 	});
-
-
-      	/** 
-	$(document).ready(function () {
-	$('#update_profile').click(function (e) {
-  	e.preventDefault()
-  	$('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This is a success message</div>');
-	})})
-	**/
-
-
-        	
- 	/*	
-	   gapi.load('auth2', initSigninV2);
-	   function initSigninV2() {
-
-			gapi.auth2.init({
-				client_id: '822644846737-j5jrv5usqo9r5srum34iop24h9vgu5jo.apps.googleusercontent.com'
-	   		}).then(function (authInstance) {
-		});
-	   }
-	
-	   function signout() {
-    		
-		var auth2 = gapi.auth2.getAuthInstance();
-    		auth2.signOut().then(function authInstance () {
-      		console.log('User signed out.');
-    		});
-  	   }
-  	*/
 	</script>
 
 </body>

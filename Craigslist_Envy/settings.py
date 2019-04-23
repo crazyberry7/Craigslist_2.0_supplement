@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'catalog.apps.CatalogConfig',
     'haystack.apps.HaystackConfig',
     'localflavor',
+    'social_django',
 )
 
 AUTH_USER_MODEL = 'users.customuser'
@@ -56,7 +57,7 @@ MEDIA_URL = "/media/"
 
 LOGOUT_REDIRECT_URL = '/search'
 LOGIN_REDIRECT_URL = '/search'
-LOGIN_URL = '/users/login'
+LOGIN_URL = '/auth/login/google-oauth2/'
 MIDDLEWARE = (
     'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,16 +108,21 @@ HAYSTACK_CONNECTIONS = {
 #Authentication Backends
 
 AUTHENTICATION_BACKENDS = (
+    "social_core.backends.google.GoogleOAuth2",   
     #"allauth.account.auth_backends.AuthenticationBackend",
     "django.contrib.auth.backends.ModelBackend",
 )
+
+# Google Sign In Required
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '839554053252-4kok0vd7kl7cd01reqjd9nnpm93nb6kl.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'wwECkDiBcMmZVdWk_fgSgSVi'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 #ACCOUNT_EMAIL_REQUIRED = True
 #ACCOUNT_USERNAME_REQUIRED = False
 
 
 # Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -126,8 +132,6 @@ DATABASES = {
 }
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
