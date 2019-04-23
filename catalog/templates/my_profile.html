@@ -33,19 +33,19 @@
 		              <form method="post">
 				{% csrf_token %}
                               <div class="form-group row">
-                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <label for="name" id="name_label"  style="font-size:12px;" class="col-4 col-form-label">Name</label> 					
+                                 &nbsp; &nbsp; &nbsp; &nbsp; <label for="name" id="name_label"  style="font-size:12px;" class="col-4 col-form-label">Name</label> 					
                                 <div class="col-8">
                                   <input id="username" name="username" style="font-size:14px;" value={{user.username}} class="form-control here" type="text">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <label for="email" id="email_label" style="font-size:12px;" class="col-4 col-form-label">Email</label> 
+                                  &nbsp; &nbsp; &nbsp; &nbsp; <label for="email" id="email_label" style="font-size:12px;" class="col-4 col-form-label">Email</label> 
                                 <div class="col-8">
                                   <input id="email" style="font-size:14px;" name="email" value={{user.email }} class="form-control here"  type="text">
                                 </div>
                               </div>
                               <div class="form-group row">
-                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <label for="publicinfo" id="desc_label"  style="font-size:12px;" class="col-4 col-form-label">Your Description</label> 
+                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <label for="publicinfo" id="desc_label"  style="font-size:12px;" class="col-4 col-form-label">Your Description</label> 
                                 <div class="col-8">
                                   <textarea id="publicinfo" style="font-size:14px; resize:none" name="publicinfo" cols="40" rows="5" class="form-control"></textarea>
                                 </div>
